@@ -69,27 +69,35 @@
      * @param {Function} callback 可选，在替换完成并显示后执行的回调
      */
     function replaceContentAfterImagesLoaded(container, newContent, callback) {
-    // 创建一个临时容器来持有新内容（避免影响真实 DOM）
+    // 创建临时容器并挂载到 body（隐藏），确保背景图片请求被触发
     const tempDiv = document.createElement('div');
+    tempDiv.style.position = 'absolute';
+    tempDiv.style.left = '-9999px';
+    tempDiv.style.top = '0';
+    tempDiv.style.width = '0';
+    tempDiv.style.height = '0';
+    tempDiv.style.overflow = 'hidden';
+    tempDiv.style.pointerEvents = 'none';
+    document.body.appendChild(tempDiv);
+
     if (newContent instanceof DocumentFragment) {
         tempDiv.appendChild(newContent.cloneNode(true));
     } else {
         tempDiv.appendChild(newContent.cloneNode(true));
     }
 
-    // 1. 收集所有 <img> 标签的图片 URL
+    // 收集所有 <img> 标签的 src
     const imgElements = tempDiv.querySelectorAll('img');
     const imageUrls = new Set();
     imgElements.forEach(img => {
         if (img.src) imageUrls.add(img.src);
     });
 
-    // 2. 收集所有元素的背景图片 URL（通过 getComputedStyle）
+    // 收集所有元素的背景图片 URL（通过 getComputedStyle，此时元素已在文档中）
     const allElements = tempDiv.querySelectorAll('*');
     allElements.forEach(el => {
         const bgImage = window.getComputedStyle(el).backgroundImage;
         if (bgImage && bgImage !== 'none') {
-            // 提取 url("...") 或 url('...') 中的 URL
             const match = bgImage.match(/url\(["']?([^"')]+)["']?\)/);
             if (match && match[1]) {
                 imageUrls.add(match[1]);
@@ -101,6 +109,9 @@
     let loadedCount = 0;
 
     function finalize() {
+        // 移除临时容器
+        document.body.removeChild(tempDiv);
+        // 替换真实内容
         container.innerHTML = '';
         if (newContent instanceof DocumentFragment) {
             container.appendChild(newContent);
@@ -122,7 +133,7 @@
         }
     };
 
-    // 为每个 URL 创建 Image 对象来监听加载
+    // 为每个 URL 创建 Image 对象进行预加载监听
     imageUrls.forEach(url => {
         const img = new Image();
         img.src = url;
@@ -134,13 +145,13 @@
         }
     });
 
-    // 超时保护
+    // 超时保护（延长至 8 秒，适应慢速网络）
     setTimeout(() => {
         if (loadedCount < totalImages) {
             console.warn('图片加载超时，强制显示内容');
             finalize();
         }
-    }, 5000);
+    }, 8000);
 }
 
     // ==================== 辅助函数 ====================
