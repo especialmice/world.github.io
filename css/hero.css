@@ -314,9 +314,10 @@ body, html {
 /* 左侧底部装饰区 */
 .left-bottom {
     height: 5%;
-    background: url('../img/sarch/white_bg.png') center center / cover no-repeat;
-    background-color: #fef9e8;
-    background-size: cover;
+    background: url(../img/sarch/down.png) center center;
+    background-color: hwb(0 62% 38% / 0.315);
+    background-size: contain;
+    border-radius: 4px;
     opacity: 0.9;
 }
 
