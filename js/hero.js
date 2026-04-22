@@ -61,6 +61,89 @@
         detailArea.appendChild(loader);
     }
 
+    // ---------- 核心：等待图片加载完成后替换内容 ----------
+    /**
+     * 将容器中的加载动画替换为给定的内容元素，并等待内容中所有图片加载完成
+     * @param {HTMLElement} container 显示加载动画的容器
+     * @param {HTMLElement|DocumentFragment} newContent 要放入的新内容
+     * @param {Function} callback 可选，在替换完成并显示后执行的回调
+     */
+    function replaceContentAfterImagesLoaded(container, newContent, callback) {
+        // 创建一个临时容器来持有新内容（避免影响真实 DOM）
+        const tempDiv = document.createElement('div');
+        if (newContent instanceof DocumentFragment) {
+            tempDiv.appendChild(newContent.cloneNode(true));
+        } else {
+            tempDiv.appendChild(newContent.cloneNode(true));
+        }
+
+        const images = tempDiv.querySelectorAll('img');
+        const totalImages = images.length;
+        let loadedCount = 0;
+
+        function finalize() {
+            // 清空容器并放入真实内容
+            container.innerHTML = '';
+            if (newContent instanceof DocumentFragment) {
+                container.appendChild(newContent);
+            } else {
+                container.appendChild(newContent);
+            }
+            if (callback) callback();
+        }
+
+        if (totalImages === 0) {
+            // 没有图片，直接替换
+            finalize();
+            return;
+        }
+
+        // 辅助函数：检查是否所有图片都已处理
+        const checkAllLoaded = () => {
+            loadedCount++;
+            if (loadedCount === totalImages) {
+                finalize();
+            }
+        };
+
+        // 遍历临时容器中的图片，为真实内容中的对应图片绑定事件
+        const realImages = [];
+        if (newContent instanceof DocumentFragment) {
+            const tempElem = document.createElement('div');
+            tempElem.appendChild(newContent.cloneNode(true));
+            realImages.push(...tempElem.querySelectorAll('img'));
+        } else {
+            const tempElem = newContent.cloneNode(true);
+            realImages.push(...tempElem.querySelectorAll('img'));
+        }
+
+        // 如果真实图片数量与临时不一致，直接使用临时图片的数量逻辑（安全兜底）
+        const targetImages = realImages.length === totalImages ? realImages : images;
+
+        if (targetImages.length === 0) {
+            finalize();
+            return;
+        }
+
+        targetImages.forEach(img => {
+            // 如果图片已经加载完成（来自缓存）
+            if (img.complete) {
+                checkAllLoaded();
+            } else {
+                img.addEventListener('load', checkAllLoaded, { once: true });
+                img.addEventListener('error', checkAllLoaded, { once: true }); // 加载失败也算完成
+            }
+        });
+
+        // 设置一个超时保护，防止图片永远加载不完（例如网络问题）
+        setTimeout(() => {
+            if (loadedCount < totalImages) {
+                console.warn('图片加载超时，强制显示内容');
+                finalize();
+            }
+        }, 5000); // 5秒超时
+    }
+
     // ==================== 辅助函数 ====================
     function createOddItem(title, leftImg, rightImg) {
         const div = document.createElement('div');
@@ -613,8 +696,8 @@
         function updateDetailArea(buttonValue) {
             showDetailAreaLoading(div2);
 
-            // 同步构建内容
-            div2.innerHTML = '';
+            // 构建新内容
+            const fragment = document.createDocumentFragment();
             const cardId = card.id;
             let targetArray = [];
             if (activeCardIndex === 0) {
@@ -632,11 +715,11 @@
             if (buttonValue === 'info') {
                 const infoTitle = sarchtitle.find(t => t.value === 'info' && t.title === '情报');
                 if (infoTitle) {
-                    div2.appendChild(createOddItem(infoTitle.title, sarchtitle[0].leftImg, sarchtitle[0].rightImg));
+                    fragment.appendChild(createOddItem(infoTitle.title, sarchtitle[0].leftImg, sarchtitle[0].rightImg));
                 }
                 const infoItem = matchedItems.find(item => item.title === '情报' || !item.title);
                 if (infoItem && infoItem.text) {
-                    appendTextDivs(div2, infoItem.text);
+                    appendTextDivs(fragment, infoItem.text);
                 }
 
                 if (activeCardIndex === 0 || activeCardIndex === 1) {
@@ -644,12 +727,12 @@
                     if (abilityItem) {
                         const abilityTitle = sarchtitle.find(t => t.value === 'info' && t.title === '能力效果');
                         if (abilityTitle) {
-                            div2.appendChild(createOddItem(abilityTitle.title, sarchtitle[0].leftImg, sarchtitle[0].rightImg));
+                            fragment.appendChild(createOddItem(abilityTitle.title, sarchtitle[0].leftImg, sarchtitle[0].rightImg));
                         }
                         if (abilityItem.data && (Array.isArray(abilityItem.data) || abilityItem.data.sections)) {
-                            renderAbilityData(div2, abilityItem.data.sections || abilityItem.data, card.Attribute);
+                            renderAbilityData(fragment, abilityItem.data.sections || abilityItem.data, card.Attribute);
                         } else if (abilityItem.text) {
-                            appendTextDivs(div2, abilityItem.text);
+                            appendTextDivs(fragment, abilityItem.text);
                         }
                     }
                 }
@@ -670,20 +753,16 @@
 
                             sectionContainer.appendChild(titleEl);
                             sectionContainer.appendChild(contentEl);
-                            div2.appendChild(sectionContainer);
+                            fragment.appendChild(sectionContainer);
                         });
                     } else if (item.text) {
-                        appendTextDivs(div2, item.text);
+                        appendTextDivs(fragment, item.text);
                     }
                 });
             }
 
-            // 等待渲染完成
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    // 内容已显示
-                });
-            });
+            // 等待图片加载完成后替换内容
+            replaceContentAfterImagesLoaded(div2, fragment);
         }
 
         const buttons = modal2Container.querySelectorAll('.right-modal2-right-col button');
@@ -698,17 +777,13 @@
         });
 
         const container = isMobileMode ? mobileRightContainer : rightPanel;
-        container.innerHTML = '';
-        container.appendChild(modal2Container);
-
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                updateDetailArea('info');
-                if (isMobileMode) {
-                    leftTopArea.classList.add('hide-original');
-                    leftTopArea.classList.add('show-mobile');
-                }
-            });
+        // 等待右侧主内容图片加载完成
+        replaceContentAfterImagesLoaded(container, modal2Container, () => {
+            updateDetailArea('info');
+            if (isMobileMode) {
+                leftTopArea.classList.add('hide-original');
+                leftTopArea.classList.add('show-mobile');
+            }
         });
     }
 
@@ -920,16 +995,11 @@
         showLeftLoading();
 
         const modal1Element = buildModal1View(cardIndex);
-        dynamicArea.innerHTML = '';
-        dynamicArea.appendChild(modal1Element);
-        currentView = 'modal1';
-        activeCardIndex = cardIndex;
-        globalBackBtn.style.display = 'block';
-
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                // 内容已显示
-            });
+        // 等待图片加载完成后替换
+        replaceContentAfterImagesLoaded(dynamicArea, modal1Element, () => {
+            currentView = 'modal1';
+            activeCardIndex = cardIndex;
+            globalBackBtn.style.display = 'block';
         });
     }
 
@@ -955,9 +1025,9 @@
             mobileRightContainer.innerHTML = '';
             if (currentView === 'modal1') {
                 const modal1Element = buildModal1View(activeCardIndex);
-                dynamicArea.innerHTML = '';
-                dynamicArea.appendChild(modal1Element);
-                globalBackBtn.style.display = 'block';
+                replaceContentAfterImagesLoaded(dynamicArea, modal1Element, () => {
+                    globalBackBtn.style.display = 'block';
+                });
             } else if (currentView === 'initial') {
                 dynamicArea.innerHTML = initialHTML;
                 bindInitialCardsEvents();
