@@ -26,11 +26,6 @@
         name: null
     };
 
-    // ---------- 可调整的加载动画时间 (单位：毫秒) ----------
-    const LOADING_DELAY_LEFT = 500;      // 左侧卡片点击后，加载动画显示时间
-    const LOADING_DELAY_RIGHT = 500;     // 右侧详情面板渲染前的加载时间
-    const LOADING_DELAY_DETAIL = 0;    // 情报/故事切换时的加载时间
-
     // ---------- 加载动画辅助函数 ----------
     function createLoaderElement() {
         const wrapper = document.createElement('div');
@@ -589,126 +584,132 @@
     }
 
     function renderRightModal2(card) {
-        // 显示右侧加载动画
         showRightLoading();
 
-        setTimeout(() => {
-            const config = cardConfigs[activeCardIndex];
-            if (!config) return;
+        const config = cardConfigs[activeCardIndex];
+        if (!config) return;
 
-            const modal2Container = document.createElement('div');
-            modal2Container.className = 'right-modal2';
-            modal2Container.style.display = 'flex';
-            modal2Container.style.flexDirection = 'column';
-            modal2Container.style.height = '100%';
+        const modal2Container = document.createElement('div');
+        modal2Container.className = 'right-modal2';
+        modal2Container.style.display = 'flex';
+        modal2Container.style.flexDirection = 'column';
+        modal2Container.style.height = '100%';
 
-            const headerArea = createHeaderArea(card, config);
-            modal2Container.appendChild(headerArea);
+        const headerArea = createHeaderArea(card, config);
+        modal2Container.appendChild(headerArea);
 
-            const div2 = document.createElement('div');
-            div2.className = 'right-modal2-detail-area';
-            div2.style.display = 'flex';
-            div2.style.flexDirection = 'column';
-            div2.style.width = '100%';
-            div2.style.overflow = 'auto';
-            div2.style.padding = '10px';
-            div2.style.gap = '0.1em';
-            div2.style.borderRadius = '8px';
-            div2.style.marginTop = '8px';
-            modal2Container.appendChild(div2);
+        const div2 = document.createElement('div');
+        div2.className = 'right-modal2-detail-area';
+        div2.style.display = 'flex';
+        div2.style.flexDirection = 'column';
+        div2.style.width = '100%';
+        div2.style.overflow = 'auto';
+        div2.style.padding = '10px';
+        div2.style.gap = '0.1em';
+        div2.style.borderRadius = '8px';
+        div2.style.marginTop = '8px';
+        modal2Container.appendChild(div2);
 
-            function updateDetailArea(buttonValue) {
-                // 详情区域内部加载动画
-                showDetailAreaLoading(div2);
+        function updateDetailArea(buttonValue) {
+            showDetailAreaLoading(div2);
 
-                setTimeout(() => {
-                    div2.innerHTML = '';
-                    const cardId = card.id;
-                    let targetArray = [];
-                    if (activeCardIndex === 0) {
-                        targetArray = buttonValue === 'info' ? squareinfoCards.characterInfo : squareinfoCards.characterst;
-                    } else if (activeCardIndex === 1) {
-                        targetArray = buttonValue === 'info' ? squareinfoCards.weaponInfo : squareinfoCards.weaponst;
-                    } else if (activeCardIndex === 2) {
-                        targetArray = buttonValue === 'info' ? squareinfoCards.worldInfo : squareinfoCards.worldst;
-                    } else {
-                        return;
+            // 同步构建内容
+            div2.innerHTML = '';
+            const cardId = card.id;
+            let targetArray = [];
+            if (activeCardIndex === 0) {
+                targetArray = buttonValue === 'info' ? squareinfoCards.characterInfo : squareinfoCards.characterst;
+            } else if (activeCardIndex === 1) {
+                targetArray = buttonValue === 'info' ? squareinfoCards.weaponInfo : squareinfoCards.weaponst;
+            } else if (activeCardIndex === 2) {
+                targetArray = buttonValue === 'info' ? squareinfoCards.worldInfo : squareinfoCards.worldst;
+            } else {
+                return;
+            }
+            const matchedItems = targetArray.filter(item => item.id === cardId);
+            if (matchedItems.length === 0) return;
+
+            if (buttonValue === 'info') {
+                const infoTitle = sarchtitle.find(t => t.value === 'info' && t.title === '情报');
+                if (infoTitle) {
+                    div2.appendChild(createOddItem(infoTitle.title, sarchtitle[0].leftImg, sarchtitle[0].rightImg));
+                }
+                const infoItem = matchedItems.find(item => item.title === '情报' || !item.title);
+                if (infoItem && infoItem.text) {
+                    appendTextDivs(div2, infoItem.text);
+                }
+
+                if (activeCardIndex === 0 || activeCardIndex === 1) {
+                    const abilityItem = matchedItems.find(item => item.title === '能力效果');
+                    if (abilityItem) {
+                        const abilityTitle = sarchtitle.find(t => t.value === 'info' && t.title === '能力效果');
+                        if (abilityTitle) {
+                            div2.appendChild(createOddItem(abilityTitle.title, sarchtitle[0].leftImg, sarchtitle[0].rightImg));
+                        }
+                        if (abilityItem.data && (Array.isArray(abilityItem.data) || abilityItem.data.sections)) {
+                            renderAbilityData(div2, abilityItem.data.sections || abilityItem.data, card.Attribute);
+                        } else if (abilityItem.text) {
+                            appendTextDivs(div2, abilityItem.text);
+                        }
                     }
-                    const matchedItems = targetArray.filter(item => item.id === cardId);
-                    if (matchedItems.length === 0) return;
+                }
+            } else if (buttonValue === 'story') {
+                matchedItems.forEach(item => {
+                    if (item.sections) {
+                        item.sections.forEach(section => {
+                            const sectionContainer = document.createElement('div');
+                            sectionContainer.className = 'story-section';
 
-                    if (buttonValue === 'info') {
-                        const infoTitle = sarchtitle.find(t => t.value === 'info' && t.title === '情报');
-                        if (infoTitle) {
-                            div2.appendChild(createOddItem(infoTitle.title, sarchtitle[0].leftImg, sarchtitle[0].rightImg));
-                        }
-                        const infoItem = matchedItems.find(item => item.title === '情报' || !item.title);
-                        if (infoItem && infoItem.text) {
-                            appendTextDivs(div2, infoItem.text);
-                        }
+                            const titleEl = document.createElement('div');
+                            titleEl.className = 'story-section-title';
+                            titleEl.textContent = section.title;
 
-                        if (activeCardIndex === 0 || activeCardIndex === 1) {
-                            const abilityItem = matchedItems.find(item => item.title === '能力效果');
-                            if (abilityItem) {
-                                const abilityTitle = sarchtitle.find(t => t.value === 'info' && t.title === '能力效果');
-                                if (abilityTitle) {
-                                    div2.appendChild(createOddItem(abilityTitle.title, sarchtitle[0].leftImg, sarchtitle[0].rightImg));
-                                }
-                                if (abilityItem.data && (Array.isArray(abilityItem.data) || abilityItem.data.sections)) {
-                                    renderAbilityData(div2, abilityItem.data.sections || abilityItem.data, card.Attribute);
-                                } else if (abilityItem.text) {
-                                    appendTextDivs(div2, abilityItem.text);
-                                }
-                            }
-                        }
-                    } else if (buttonValue === 'story') {
-                        matchedItems.forEach(item => {
-                            if (item.sections) {
-                                item.sections.forEach(section => {
-                                    const sectionContainer = document.createElement('div');
-                                    sectionContainer.className = 'story-section';
+                            const contentEl = document.createElement('div');
+                            contentEl.className = 'story-section-content';
+                            contentEl.textContent = section.content;
 
-                                    const titleEl = document.createElement('div');
-                                    titleEl.className = 'story-section-title';
-                                    titleEl.textContent = section.title;
-
-                                    const contentEl = document.createElement('div');
-                                    contentEl.className = 'story-section-content';
-                                    contentEl.textContent = section.content;
-
-                                    sectionContainer.appendChild(titleEl);
-                                    sectionContainer.appendChild(contentEl);
-                                    div2.appendChild(sectionContainer);
-                                });
-                            } else if (item.text) {
-                                appendTextDivs(div2, item.text);
-                            }
+                            sectionContainer.appendChild(titleEl);
+                            sectionContainer.appendChild(contentEl);
+                            div2.appendChild(sectionContainer);
                         });
+                    } else if (item.text) {
+                        appendTextDivs(div2, item.text);
                     }
-                }, LOADING_DELAY_DETAIL);
+                });
             }
 
-            const buttons = modal2Container.querySelectorAll('.right-modal2-right-col button');
-            buttons.forEach(btn => {
-                const btnValue = btn.querySelector('img')?.alt;
-                if (btnValue === 'info' || btnValue === 'story') {
-                    btn.onclick = (e) => {
-                        e.stopPropagation();
-                        updateDetailArea(btnValue);
-                    };
+            // 等待渲染完成
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    // 内容已显示
+                });
+            });
+        }
+
+        const buttons = modal2Container.querySelectorAll('.right-modal2-right-col button');
+        buttons.forEach(btn => {
+            const btnValue = btn.querySelector('img')?.alt;
+            if (btnValue === 'info' || btnValue === 'story') {
+                btn.onclick = (e) => {
+                    e.stopPropagation();
+                    updateDetailArea(btnValue);
+                };
+            }
+        });
+
+        const container = isMobileMode ? mobileRightContainer : rightPanel;
+        container.innerHTML = '';
+        container.appendChild(modal2Container);
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                updateDetailArea('info');
+                if (isMobileMode) {
+                    leftTopArea.classList.add('hide-original');
+                    leftTopArea.classList.add('show-mobile');
                 }
             });
-
-            const container = isMobileMode ? mobileRightContainer : rightPanel;
-            container.innerHTML = '';
-            container.appendChild(modal2Container);
-            updateDetailArea('info');
-
-            if (isMobileMode) {
-                leftTopArea.classList.add('hide-original');
-                leftTopArea.classList.add('show-mobile');
-            }
-        }, LOADING_DELAY_RIGHT);
+        });
     }
 
     // ==================== 筛选弹窗 ====================
@@ -917,14 +918,19 @@
     // ==================== 视图切换 ====================
     function showModal1View(cardIndex) {
         showLeftLoading();
-        setTimeout(() => {
-            const modal1Element = buildModal1View(cardIndex);
-            dynamicArea.innerHTML = '';
-            dynamicArea.appendChild(modal1Element);
-            currentView = 'modal1';
-            activeCardIndex = cardIndex;
-            globalBackBtn.style.display = 'block';
-        }, LOADING_DELAY_LEFT);
+
+        const modal1Element = buildModal1View(cardIndex);
+        dynamicArea.innerHTML = '';
+        dynamicArea.appendChild(modal1Element);
+        currentView = 'modal1';
+        activeCardIndex = cardIndex;
+        globalBackBtn.style.display = 'block';
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                // 内容已显示
+            });
+        });
     }
 
     function restoreInitialView() {
