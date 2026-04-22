@@ -996,21 +996,11 @@
 
         const modal1Element = buildModal1View(cardIndex);
         // 等待图片加载完成后替换
-         // 临时测试：延迟2秒后再替换内容，便于观察动画
-    setTimeout(() => {
-        dynamicArea.innerHTML = '';
-        dynamicArea.appendChild(modal1Element);
-        currentView = 'modal1';
-        activeCardIndex = cardIndex;
-        globalBackBtn.style.display = 'block';
-    }, 2000);
-    
-    // 原始逻辑（等图片加载）
-    // replaceContentAfterImagesLoaded(dynamicArea, modal1Element, () => {
-    //     currentView = 'modal1';
-    //     activeCardIndex = cardIndex;
-    //     globalBackBtn.style.display = 'block';
-    // });
+        replaceContentAfterImagesLoaded(dynamicArea, modal1Element, () => {
+            currentView = 'modal1';
+            activeCardIndex = cardIndex;
+            globalBackBtn.style.display = 'block';
+        });
     }
 
     function restoreInitialView() {
