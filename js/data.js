@@ -1,5 +1,5 @@
-const CDN_BASE = 'https://cdn.jsdelivr.net/gh/especialmice/world.github.io@main';
-    window.AppData = {
+const CDN_BASE = 'https://cdn.osyb.cn/gh/especialmice/world.github.io@main';
+window.AppData = {
    cardConfigs:  [
         {
             // 卡片0：星导使
