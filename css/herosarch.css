@@ -27,7 +27,7 @@
     height: 160px !important;
     max-width: 40vw !important;
     max-height: 40vw !important;
-    background: url('../img/loader/1.gif') center center / contain no-repeat !important;
+    background: url('/world.github.io/img/loader/1.gif') center center / contain no-repeat !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -38,7 +38,7 @@
 .loader-inner {
     width: 40% !important;
     height: 40% !important;
-    background: url('../img/loader/2.gif') center center / contain no-repeat !important;
+    background: url('/world.github.io/img/loader/2.gif') center center / contain no-repeat !important;
     position: absolute !important;
     left: -2% !important;
     bottom: -8% !important;
