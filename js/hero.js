@@ -69,80 +69,79 @@
      * @param {Function} callback 可选，在替换完成并显示后执行的回调
      */
     function replaceContentAfterImagesLoaded(container, newContent, callback) {
-        // 创建一个临时容器来持有新内容（避免影响真实 DOM）
-        const tempDiv = document.createElement('div');
-        if (newContent instanceof DocumentFragment) {
-            tempDiv.appendChild(newContent.cloneNode(true));
-        } else {
-            tempDiv.appendChild(newContent.cloneNode(true));
-        }
-
-        const images = tempDiv.querySelectorAll('img');
-        const totalImages = images.length;
-        let loadedCount = 0;
-
-        function finalize() {
-            // 清空容器并放入真实内容
-            container.innerHTML = '';
-            if (newContent instanceof DocumentFragment) {
-                container.appendChild(newContent);
-            } else {
-                container.appendChild(newContent);
-            }
-            if (callback) callback();
-        }
-
-        if (totalImages === 0) {
-            // 没有图片，直接替换
-            finalize();
-            return;
-        }
-
-        // 辅助函数：检查是否所有图片都已处理
-        const checkAllLoaded = () => {
-            loadedCount++;
-            if (loadedCount === totalImages) {
-                finalize();
-            }
-        };
-
-        // 遍历临时容器中的图片，为真实内容中的对应图片绑定事件
-        const realImages = [];
-        if (newContent instanceof DocumentFragment) {
-            const tempElem = document.createElement('div');
-            tempElem.appendChild(newContent.cloneNode(true));
-            realImages.push(...tempElem.querySelectorAll('img'));
-        } else {
-            const tempElem = newContent.cloneNode(true);
-            realImages.push(...tempElem.querySelectorAll('img'));
-        }
-
-        // 如果真实图片数量与临时不一致，直接使用临时图片的数量逻辑（安全兜底）
-        const targetImages = realImages.length === totalImages ? realImages : images;
-
-        if (targetImages.length === 0) {
-            finalize();
-            return;
-        }
-
-        targetImages.forEach(img => {
-            // 如果图片已经加载完成（来自缓存）
-            if (img.complete) {
-                checkAllLoaded();
-            } else {
-                img.addEventListener('load', checkAllLoaded, { once: true });
-                img.addEventListener('error', checkAllLoaded, { once: true }); // 加载失败也算完成
-            }
-        });
-
-        // 设置一个超时保护，防止图片永远加载不完（例如网络问题）
-        setTimeout(() => {
-            if (loadedCount < totalImages) {
-                console.warn('图片加载超时，强制显示内容');
-                finalize();
-            }
-        }, 5000); // 5秒超时
+    // 创建一个临时容器来持有新内容（避免影响真实 DOM）
+    const tempDiv = document.createElement('div');
+    if (newContent instanceof DocumentFragment) {
+        tempDiv.appendChild(newContent.cloneNode(true));
+    } else {
+        tempDiv.appendChild(newContent.cloneNode(true));
     }
+
+    // 1. 收集所有 <img> 标签的图片 URL
+    const imgElements = tempDiv.querySelectorAll('img');
+    const imageUrls = new Set();
+    imgElements.forEach(img => {
+        if (img.src) imageUrls.add(img.src);
+    });
+
+    // 2. 收集所有元素的背景图片 URL（通过 getComputedStyle）
+    const allElements = tempDiv.querySelectorAll('*');
+    allElements.forEach(el => {
+        const bgImage = window.getComputedStyle(el).backgroundImage;
+        if (bgImage && bgImage !== 'none') {
+            // 提取 url("...") 或 url('...') 中的 URL
+            const match = bgImage.match(/url\(["']?([^"')]+)["']?\)/);
+            if (match && match[1]) {
+                imageUrls.add(match[1]);
+            }
+        }
+    });
+
+    const totalImages = imageUrls.size;
+    let loadedCount = 0;
+
+    function finalize() {
+        container.innerHTML = '';
+        if (newContent instanceof DocumentFragment) {
+            container.appendChild(newContent);
+        } else {
+            container.appendChild(newContent);
+        }
+        if (callback) callback();
+    }
+
+    if (totalImages === 0) {
+        finalize();
+        return;
+    }
+
+    const checkAllLoaded = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+            finalize();
+        }
+    };
+
+    // 为每个 URL 创建 Image 对象来监听加载
+    imageUrls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+        if (img.complete) {
+            checkAllLoaded();
+        } else {
+            img.addEventListener('load', checkAllLoaded, { once: true });
+            img.addEventListener('error', checkAllLoaded, { once: true });
+        }
+    });
+
+    // 超时保护
+    setTimeout(() => {
+        if (loadedCount < totalImages) {
+            console.warn('图片加载超时，强制显示内容');
+            finalize();
+        }
+    }, 5000);
+}
 
     // ==================== 辅助函数 ====================
     function createOddItem(title, leftImg, rightImg) {
