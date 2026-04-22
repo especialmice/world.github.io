@@ -70,7 +70,18 @@ body {
     font-weight: 500;
     position: relative;
 }
-
+.nav::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 12px;
+    background-image: url(../img/main/top_kv-nav_line.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px 14px;
+    vertical-align: middle;
+}
 .nav::after {
     content: "";
     display: inline-block;
@@ -84,9 +95,7 @@ body {
     vertical-align: middle;
 }
 
-.nav:last-child::after {
-    display: none;
-}
+
 
 .nav:hover {
     color: var(--primary-color);
