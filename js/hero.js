@@ -236,7 +236,7 @@
         }
         const attrIconRight = currentAttrObj ? currentAttrObj.right : '';
         if (sameAttrIcon && attrIconRight) {
-            result = result.replace(/(抗性降低)/g, `<img src="${sameAttrIcon}" style="height:1em; vertical-align:middle; margin:0 2px;">$1<img src="${attrIconRight}" style="height:1em; vertical-align:middle; margin:0 2px;">`);
+            result = result.replace(/(抗性降低)/g, `<img src="${sameAttrIcon}" style="height:1em; vertical-align:middle; margin:0 2px;">$1<img src="${attrIconRight}" style="height:1.5em; vertical-align:middle; margin:0 2px;">`);
         }
 
         const generalListFull = window.AppData.abilitytxticon.general || [];

@@ -8,8 +8,8 @@
                 { id: 'char1', name: '阿尔克', cv: '逢坂良太', start: '4', Attribute: '火', race: '人', gender: '男 ' , cdbg1: 'img/sarch/char/1/1.png', cdbg2: 'img/sarch/char/1/2.png' ,cg:'img/sarch/char/1/cg/1.png'},
                 { id: 'char2', name: '克拉莉丝', cv:'佐仓绫音', start: '5', Attribute: '火', race: '人', race2: ' 精灵', gender: ' 女' ,cdbg1: 'img/sarch/char/2/1.png', cdbg2: 'img/sarch/char/2/2.png',cg:'img/sarch/char/2/cg/1.png' },
                 { id: 'char3', name: '玛丽安', cv:'山本希望',start: '5', Attribute: '火', race: '人', gender: ' 女' ,cdbg1: 'img/sarch/char/3/1.png', cdbg2: 'img/sarch/char/3/2.png',cg:'img/sarch/char/3/cg/1.png' },
-                { id: 'char6', name: '塞拉', cv:'悠木碧',start: '5', Attribute: '电', race: '人', race2: ' 机械',gender: '女 ' , cdbg1: 'img/sarch/char/6/1.png', cdbg2: 'img/sarch/char/6/2.png' ,cg:'img/sarch/char/6/cg/1.png'},
-                { id: 'char7', name: '牡丹', cv:'竹达彩奈',start: '5', Attribute: '电', race: '人',gender: '女 ' , cdbg1: 'img/sarch/char/7/1.png', cdbg2: 'img/sarch/char/7/2.png',cg:'img/sarch/char/7/cg/1.png' },
+                { id: 'char6', name: '塞拉', cv:'悠木碧',start: '5', Attribute: '雷', race: '人', race2: ' 机械',gender: '女 ' , cdbg1: 'img/sarch/char/6/1.png', cdbg2: 'img/sarch/char/6/2.png' ,cg:'img/sarch/char/6/cg/1.png'},
+                { id: 'char7', name: '牡丹', cv:'竹达彩奈',start: '5', Attribute: '雷', race: '人',gender: '女 ' , cdbg1: 'img/sarch/char/7/1.png', cdbg2: 'img/sarch/char/7/2.png',cg:'img/sarch/char/7/cg/1.png' },
                 { id: 'char14', name: '赛法', cv:'五十岚裕美',start: '5', Attribute: '水', race: '人', race2: ' 精灵',gender: ' 女' , cdbg1: 'img/sarch/char/14/1.png', cdbg2: 'img/sarch/char/14/2.png',cg:'img/sarch/char/14/cg/1.png' },
                 { id: 'char15', name: '雷拉斯', cv:'齐藤壮马',start: '5', Attribute: '水', race: '人', gender: '男 ' ,cdbg1: 'img/sarch/char/15/1.png', cdbg2: 'img/sarch/char/15/2.png',cg:'img/sarch/char/15/cg/1.png' },
                 { id: 'char16', name: '罗尔夫', cv:'上田燿司',start: '5', Attribute: '火', race: '人', race2: ' 兽',gender: '男 ' , cdbg1: 'img/sarch/char/16/1.png', cdbg2: 'img/sarch/char/16/2.png',cg:'img/sarch/char/16/cg/1.png' },
@@ -22,8 +22,8 @@
                 { id: 'char35', name: '阿须桐丸', cv:'山下大辉',start: '4', Attribute: '火', race: '人', gender: ' 男' ,cdbg1: 'img/sarch/char/35/1.png', cdbg2: 'img/sarch/char/35/2.png',cg:'img/sarch/char/35/cg/1.png' },
                 { id: 'char39', name: '爱丽丝', cv:'大久保瑠美',start: '4', Attribute: '水', race: '人', race2: '精灵', gender: ' 女' ,cdbg1: 'img/sarch/char/39/1.png', cdbg2: 'img/sarch/char/39/2.png',cg:'img/sarch/char/39/cg/1.png' },
                 { id: 'char40', name: '夏农', cv:'高木美佑',start: '4', Attribute: '水', race: '人', gender: ' 女' ,cdbg1: 'img/sarch/char/40/1.png', cdbg2: 'img/sarch/char/40/2.png' ,cg:'img/sarch/char/40/cg/1.png'},
-                { id: 'char44', name: '艾琳诺儿', cv:'高桥李依',start: '4', Attribute: '光', race: '人', race2: '精灵', gender: ' 女' ,cdbg1: 'img/sarch/char/44/1.png', cdbg2: 'img/sarch/char/44/2.png' ,cg:'img/sarch/char/44/cg/1.png'},
-                { id: 'char45', name: '杰', cv:'下崎纮史',start: '4', Attribute: '光', race: '人',race2: '兽', gender: ' 男' ,cdbg1: 'img/sarch/char/45/1.png', cdbg2: 'img/sarch/char/45/2.png' ,cg:'img/sarch/char/45/cg/1.png'},
+                { id: 'char44', name: '艾琳诺儿', cv:'高桥李依',start: '4', Attribute: '雷', race: '人', race2: '精灵', gender: ' 女' ,cdbg1: 'img/sarch/char/44/1.png', cdbg2: 'img/sarch/char/44/2.png' ,cg:'img/sarch/char/44/cg/1.png'},
+                { id: 'char45', name: '杰', cv:'下崎纮史',start: '4', Attribute: '雷', race: '人',race2: '兽', gender: ' 男' ,cdbg1: 'img/sarch/char/45/1.png', cdbg2: 'img/sarch/char/45/2.png' ,cg:'img/sarch/char/45/cg/1.png'},
                 { id: 'char49', name: '宗士郎', cv:'代永翼',start: '4', Attribute: '风', race: '人', gender: ' 男' ,cdbg1: 'img/sarch/char/49/1.png', cdbg2: 'img/sarch/char/49/2.png' ,cg:'img/sarch/char/49/cg/1.png'},
                 { id: 'char50', name: '梅露希儿', cv:'芹泽优',start: '4', Attribute: '风', race: '人',race2: '精灵', gender: ' 女' ,cdbg1: 'img/sarch/char/50/1.png', cdbg2: 'img/sarch/char/50/2.png' ,cg:'img/sarch/char/50/cg/1.png'},
                 { id: 'char54', name: '里昂', cv:'泽城千春',start: '4', Attribute: '暗', race: '人', race2: '精灵',gender: ' 男' ,cdbg1: 'img/sarch/char/54/1.png', cdbg2: 'img/sarch/char/54/2.png' ,cg:'img/sarch/char/54/cg/1.png'},
@@ -34,8 +34,8 @@
                 { id: 'char65', name: '仁', cv:'佐佐木琢磨',start: '3', Attribute: '火', race: '人', gender: '男' ,cdbg1: 'img/sarch/char/65/1.png', cdbg2: 'img/sarch/char/65/2.png' ,cg:'img/sarch/char/65/cg/1.png'},
                 { id: 'char69', name: '艾尔莎', cv:'明坂聪美',start: '3', Attribute: '水', race: '人', gender: ' 女' ,cdbg1: 'img/sarch/char/69/1.png', cdbg2: 'img/sarch/char/69/2.png' ,cg:'img/sarch/char/69/cg/1.png'},
                 { id: 'char70', name: '克劳斯', cv:'三宅健太',start: '3', Attribute: '水', race: '人', race2: '兽', gender: '男' ,cdbg1: 'img/sarch/char/70/1.png', cdbg2: 'img/sarch/char/70/2.png',cg:'img/sarch/char/70/cg/1.png' },
-                { id: 'char74', name: '黑', cv:'畠中祐',start: '3', Attribute: '电', race: '人',race2: '兽', gender: ' 男' ,cdbg1: 'img/sarch/char/74/1.png', cdbg2: 'img/sarch/char/74/2.png' ,cg:'img/sarch/char/74/cg/1.png'},
-                { id: 'char75', name: '阿尔伯特', cv:'长南翔太',start: '3', Attribute: '电', race: '人', race2: '兽', gender: ' 男' ,cdbg1: 'img/sarch/char/75/1.png', cdbg2: 'img/sarch/char/75/2.png' ,cg:'img/sarch/char/75/cg/1.png'},
+                { id: 'char74', name: '黑', cv:'畠中祐',start: '3', Attribute: '雷', race: '人',race2: '兽', gender: ' 男' ,cdbg1: 'img/sarch/char/74/1.png', cdbg2: 'img/sarch/char/74/2.png' ,cg:'img/sarch/char/74/cg/1.png'},
+                { id: 'char75', name: '阿尔伯特', cv:'长南翔太',start: '3', Attribute: '雷', race: '人', race2: '兽', gender: ' 男' ,cdbg1: 'img/sarch/char/75/1.png', cdbg2: 'img/sarch/char/75/2.png' ,cg:'img/sarch/char/75/cg/1.png'},
                 { id: 'char79', name: '奈丝卡', cv:'高桥李依',start: '3', Attribute: '风', race: '人', gender: '女' ,cdbg1: 'img/sarch/char/79/1.png', cdbg2: 'img/sarch/char/79/2.png',cg:'img/sarch/char/79/cg/1.png' },
                 { id: 'char80', name: '缪', cv:'加藤英美里',start: '3', Attribute: '风', race: '人',race2: '兽', gender: '女' ,cdbg1: 'img/sarch/char/80/1.png', cdbg2: 'img/sarch/char/80/2.png',cg:'img/sarch/char/80/cg/1.png' },
                 { id: 'char84', name: '欧雷欧', cv:'山本希望',start: '3', Attribute: '光', race: '人',  race2: '兽',gender: '男' ,cdbg1: 'img/sarch/char/84/1.png', cdbg2: 'img/sarch/char/84/2.png' ,cg:'img/sarch/char/84/cg/1.png'},
@@ -59,7 +59,7 @@
                 { id: 'weapon4', name: '基因切割者', designation:'遗产刀',start:'5',Attribute: '火', cdbg1: 'img/sarch/weapon/4/1.png', cdbg2: 'img/sarch/weapon/4/2.png', cg: '' },
                 { id: 'weapon5', name: '海渊棘刃', designation:'水毒短刀',start:'5',Attribute: '水', cdbg1: 'img/sarch/weapon/5/1.png', cdbg2: 'img/sarch/weapon/5/2.png', cg: '' },
                 { id: 'weapon6', name: '流水刃剑', designation:'青女刀',start:'5',Attribute: '水', cdbg1: 'img/sarch/weapon/6/1.png', cdbg2: 'img/sarch/weapon/6/2.png', cg: '' },
-                { id: 'weapon7', name: '紫电真打', designation:'妖怪剑',start:'5',Attribute: '雷', cdbg1: 'img/sarch/weapon/7/1.png', cdbg2: 'img/sarch/weapon/7/2.png', cg: '' },
+                { id: 'weapon7', name: '紫雷真打', designation:'妖怪剑',start:'5',Attribute: '雷', cdbg1: 'img/sarch/weapon/7/1.png', cdbg2: 'img/sarch/weapon/7/2.png', cg: '' },
                 { id: 'weapon8', name: '黑龙雷剑', designation:'雷龙剑',start:'5',Attribute: '雷', cdbg1: 'img/sarch/weapon/8/1.png', cdbg2: 'img/sarch/weapon/8/2.png' },
                 { id: 'weapon9', name: '死皇之斧', designation:'死皇斧',start:'5',Attribute: '风', cdbg1: 'img/sarch/weapon/9/1.png', cdbg2: 'img/sarch/weapon/9/2.png', cg: '' },
                 { id: 'weapon10', name: '无声无瑕', designation:'铃鹿靴',start:'5',Attribute: '风', cdbg1: 'img/sarch/weapon/10/1.png', cdbg2: 'img/sarch/weapon/10/2.png', cg: '' },
@@ -665,7 +665,7 @@
                             {
                                 title: '必杀技能【600能量】',
                                 content: '天华缭乱·雷霆唤来',
-                                texts: ['召唤大量闪电，对领域内全体敌人造成雷伤害(不破坏弱点) + 赋予麻痹效果','技能数据最大攻击段数1，最大倍率18','麻痹持续10秒（所有角色的麻痹效果都会随造成次数衰减）'],
+                                texts: ['召唤大量闪雷，对领域内全体敌人造成雷伤害(不破坏弱点) + 赋予麻痹效果','技能数据最大攻击段数1，最大倍率18','麻痹持续10秒（所有角色的麻痹效果都会随造成次数衰减）'],
                                 type: 'leader'          // 自定义类型
                             },
                             {
@@ -988,7 +988,7 @@
                         ]
                     }
                 },
-                { id: 'char40',value: 'info', title: '情报', text: '精灵剑士，拥有象征雷电的别名“星之焰”。在森林遇到危机时挺身而出战斗，有着被公认为不像精灵的性格。' },
+                { id: 'char40',value: 'info', title: '情报', text: '精灵剑士，拥有象征雷雷的别名“星之焰”。在森林遇到危机时挺身而出战斗，有着被公认为不像精灵的性格。' },
                 { id: 'char40',value: 'info',title: '能力效果',
                     data: {
                         sections: [
@@ -1049,8 +1049,8 @@
                         sections: [
                             {
                                 title: '必杀技能【390能量】',
-                                content: '雷电之刃',
-                                texts: ['连续施放缠绕着雷电的回旋斩，对周围的敌人造成伤害【对迟缓效果中的敌人伤害提升】。','最大攻击段数12，最大倍率15[对钝足效果中的敌人造成伤害UP25%]'],
+                                content: '雷雷之刃',
+                                texts: ['连续施放缠绕着雷雷的回旋斩，对周围的敌人造成伤害【对迟缓效果中的敌人伤害提升】。','最大攻击段数12，最大倍率15[对钝足效果中的敌人造成伤害UP25%]'],
                                 type: 'leader'          // 自定义类型
                             },
                             {
@@ -1483,14 +1483,14 @@
                         ]
                     }
                 },
-                { id: 'char64',value: 'info', title: '情报', text: '在沙漠边境，避开王族视线探索遗迹的猎人少年。用自己挖掘到的电磁鱼叉狩猎大型魔物，是个实力派。' },
+                { id: 'char64',value: 'info', title: '情报', text: '在沙漠边境，避开王族视线探索遗迹的猎人少年。用自己挖掘到的雷磁鱼叉狩猎大型魔物，是个实力派。' },
                 { id: 'char64',value: 'info',title: '能力效果',
                     data: {
                         sections: [
                             {
                                 title: '必杀技能【480能量】',
-                                content: '电磁之矛',
-                                texts: ['射出电磁鱼叉，对前方的敌人造成伤害[对种族“兽”、“植物”、“龙”的伤害提升]','攻击段数8，伤害倍率16（对种族为兽、龙或植物的敌人的伤害倍率+25%）'],
+                                content: '雷磁之矛',
+                                texts: ['射出雷磁鱼叉，对前方的敌人造成伤害[对种族“兽”、“植物”、“龙”的伤害提升]','攻击段数8，伤害倍率16（对种族为兽、龙或植物的敌人的伤害倍率+25%）'],
                                 type: 'leader'          // 自定义类型
                             },
                             {
@@ -2306,7 +2306,7 @@
                         ]
                     }
                 },
-            { id: 'weapon7',value: 'info', text: ['和之国传来的绝品。某个心血来潮的画师为了掌握如何描绘雷电而委托雷神打造的太刀'] },
+            { id: 'weapon7',value: 'info', text: ['和之国传来的绝品。某个心血来潮的画师为了掌握如何描绘雷雷而委托雷神打造的太刀'] },
              { id: 'weapon7',value: 'info',title: '能力效果',
                     data: {
                         sections: [
@@ -2555,7 +2555,7 @@
                         ]
                     }
                 },
-            { id: 'weapon26',value: 'info', text: ['摇曳的迷宫中出土的异界名品。缠绕着电光的标枪，似乎只要按下把手就能改变颜色。'] },
+            { id: 'weapon26',value: 'info', text: ['摇曳的迷宫中出土的异界名品。缠绕着雷光的标枪，似乎只要按下把手就能改变颜色。'] },
              { id: 'weapon26',value: 'info',title: '能力效果',
                     data: {
                         sections: [
@@ -2644,7 +2644,7 @@
                 { title: '妖怪山太黑主百鬼夜行', content: '一贫如洗的醉汉偶然遇到了百鬼夜行。在害怕的男人面前出现的是扮成圣诞老人的稻穗。她将圣诞礼物送给男人之后，飞上了和之国的天空。奉将军之命解决这场骚乱的水善一脸生气地想要阻止稻穗，却不得其法。她甩开水善，飞向了天空。' }],
             },
             { id: 'char26', value: 'story', sections: [
-                { title: '麻烦射手', content: '塔吉斯误将白错认成从研究所里逃跑的巨大白老虎，向一行人发起攻击。当他发现是认错人以后向众人道歉，然后以惊人的速度离开了。阿尔克发现了塔吉斯要找的怪物，大声呼唤塔吉斯。塔吉斯如约迅速赶到，用等离子斩马刀一击便击倒了怪物，但这却让街区停电了。塔吉斯为了逃避赔偿强行随一行人来到了星见镇。' },
+                { title: '麻烦射手', content: '塔吉斯误将白错认成从研究所里逃跑的巨大白老虎，向一行人发起攻击。当他发现是认错人以后向众人道歉，然后以惊人的速度离开了。阿尔克发现了塔吉斯要找的怪物，大声呼唤塔吉斯。塔吉斯如约迅速赶到，用等离子斩马刀一击便击倒了怪物，但这却让街区停雷了。塔吉斯为了逃避赔偿强行随一行人来到了星见镇。' },
                 { title: '世界狂热', content: '塔吉斯带阿尔克来游玩城里最受欢迎的娱乐项目“狂热世界”。这款能肆意打怪的VR游戏正是通过塔吉斯出售的记忆制作的。阿尔克追问他是否出售了星见镇的记忆，塔吉斯则说要让阿尔克看看他大度的一面。塔吉斯骑着摩托载阿尔克兜风，却不慎撞上了DAN的大厦。见状塔吉斯再次央求阿尔克将他藏在星见镇。' }],
             },
             { id: 'char30', value: 'story', sections: [

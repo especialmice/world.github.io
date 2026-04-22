@@ -359,7 +359,7 @@
 .ability-skill-item {
     display: flex;
     gap: 12px;
-    margin: 16px 0 16px 16px;
+    margin: 16px 16px 16px 16px;
     position: relative;
 }
 
