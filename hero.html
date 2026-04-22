@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>星见图鉴 · 仿World Flipper风格</title>
+    <!-- 引入外部样式表 -->
+    <link rel="stylesheet" href="./css/hero.css">
+    <link rel="stylesheet" href="./css/herosarch.css"> 
+</head>
+<body>
+    <!-- 外层响应式容器，宽度90%居中，根据屏幕自动缩放 -->
+    <div class="responsive-wrapper">
+        <div class="dashboard">
+            <!-- 左侧面板：占宽40%（桌面端）或100%（移动端） -->
+            <div class="left-panel">
+                <!-- 左侧主要内容区，高度95%，包含动态视图和移动端备用容器 -->
+                <div class="left-top" id="leftTopArea">
+                    <!-- 动态视图容器，用于展示初始视图或模态框1 -->
+                    <div class="view-container" id="viewContainer">
+                        <div id="dynamicArea" class="dynamic-content">
+                            <!-- 初始视图：顶部图区 (div2) -->
+                            <div class="initial-div2" id="initialDiv2"></div>
+                            <!-- 卡片列表区 (div3) -->
+                            <div class="initial-div3" id="initialDiv3">
+                                <div class="init-card-list" id="initCardList">
+                                    <!-- 三张卡片，共用 .card 类保证 JS 能选中，各自保留特有类名用于背景样式 -->
+                                    <div class="card init-card1" data-card-index="0"></div>
+                                    <div class="card init-card2" data-card-index="1"></div>
+                                    <div class="card init-card3" data-card-index="2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 全局返回按钮，仅在模态框1显示时出现 -->
+                        <button class="back-btn" id="globalBackBtn">◀ 返回</button>
+                    </div>
+                    <!-- 移动端专用容器：屏幕宽度<800px时，用于显示原本右侧的模态框2内容，替换左侧整个区域 -->
+                    <div class="mobile-right-container" id="mobileRightContainer"></div>
+                </div>
+                <!-- 左侧底部装饰区，高5%，白色背景图 -->
+                <div class="left-bottom"></div>
+            </div>
+            <!-- 右侧面板：桌面端显示，宽度60% -->
+            <div class="right-panel" id="rightPanel">
+                <div class="right-placeholder">✦ 点击左侧卡片开启星见之旅 ✦</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入外部 JavaScript -->
+     <script src="js/data.js"></script>
+    <script src="js/hero.js"></script>
+</body>
+</html>
+

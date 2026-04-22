@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界翻转者 · 星见旅程</title>
+    <link rel="stylesheet" href="./css/homes.css">
+</head>
+<body>
+    <!-- 导航栏 (Logo左 + 三个标题绝对居中) -->
+    <nav class="nav-top">
+        <div class="logo" aria-label="Logo"></div>
+        <div class="nav-box">
+            <a href="indexs.html" class="nav">首页</a>
+            <a href="hero.html" class="nav">星见图鉴</a>
+            <a href="card.html" class="nav">卡面</a>
+        </div>
+    </nav>
+
+    <!-- 右侧垂直导航点 -->
+    <div class="nav-dots" role="navigation" aria-label="页面快速跳转">
+        <a href="#section1" aria-label="故事背景"><img src="img/main/跳.png" alt="点"></a>
+        <a href="#section2" aria-label="游戏展示"><img src="img/main/跳.png" alt="点"></a>
+        <a href="#section3" aria-label="更多资讯"><img src="img/main/跳.png" alt="点"></a>
+    </div>
+
+    <main class="story-sections">
+        <!-- 统一背景层：分区1 + 分区2 共用 d5 背景 -->
+        <div class="unified-bg">
+            <!-- 第一分区：故事背景 -->
+            <div class="first-bg-wrapper">
+                <section class="section first" id="section1">
+                    <div class="inner-wrapper">
+                        <div class="story-content">
+                            <h1>故事</h1>
+                            <p class="subtitle">世界已经相连<br>去吧！向着新世界！</p>
+                            <p class="text">
+                                少年与少女遇见光的那天。<br>
+                                天空闪耀，无限的《世界》显现出其姿态。<br>
+                                那里是被遗忘的街道。<br>
+                                失去记忆的少年，以及陪伴他的神秘少女。<br>
+                                除了两人之外空无一物的小小世界。<br>
+                                然而这份平静，即将伴随着闪光被打破。<br>
+                                自称为昔日《勇者》的不可思议动物——莱特的出现。<br>
+                                追赶他而来的《魔王之影》。<br>
+                                然后被遗忘的街道开始鸣动，少女的口中宣告了命运。<br>
+                                “World Flipper，启动。”
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 第二分区：切换内容区域 -->
+            <div class="background-wrapper">
+                <section class="section second" id="section2">
+                    <div class="switch-buttons">
+                        <button class="switch-btn active" data-content="1"></button>
+                        <button class="switch-btn" data-content="2"></button>
+                        <button class="switch-btn" data-content="3"></button>
+                    </div>
+                    <div class="inner-wrapper">
+                        <div class="split-left">
+                            <div class="text-area"></div>
+                            <div class="image-area">
+                                <img src="img/main/1.png" alt="内容展示" class="content-image">
+                            </div>
+                        </div>
+                        <div class="split-right">
+                            <div class="video-container">
+                                <video src="video/video1.mp4" controls preload="metadata" class="content-video"></video>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- 第三分区：底部链接区域 -->
+        <section class="section fourth" id="section3">
+            <div class="footer-container">
+                <div class="footer-row">
+                    <div class="footer-col">
+                        <div class="col-title">world</div>
+                        <div class="col-links">
+                            <a href="#">关于我们</a>
+                            <a href="#">联系我们</a>
+                            <a href="#">用户协议</a>
+                            <a href="#">加入我们</a>
+                            <a href="#">隐私协议</a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <div class="col-title">传送</div>
+                        <div class="col-links">
+                            <a href="#">协议汇总</a>
+                            <a href="#">活动中心</a>
+                            <a href="#">活动专题页</a>
+                            <a href="#">侵权申诉</a>
+                            <a href="#">帮助中心</a>
+                            <a href="#">社区中心</a>
+                        </div>
+                        <div class="col-links">
+                            <a href="#">壁纸站</a>
+                            <a href="#">广告合作</a>
+                            <a href="#">名人堂</a>
+                            <a href="#">MCN管理中心</a>
+                            <a href="#">高级弹幕</a>
+                            <a href="#">品牌号官网</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/mains.js"></script>
+</body>
+</html>
