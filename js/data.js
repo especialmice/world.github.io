@@ -1,4 +1,61 @@
-const CDN_BASE = 'https://cdn.osyb.cn/gh/especialmice/world.github.io@main';
+// 镜像列表
+const CDN_MIRRORS = [
+    'https://cdn.osyb.cn/gh/especialmice/world.github.io@main',
+    'https://jsd.cdn.zzko.cn/gh/especialmice/world.github.io@main',
+    'https://jsd.onmicrosoft.cn/gh/especialmice/world.github.io@main',
+    'https://cdn.jsdelivr.net/gh/especialmice/world.github.io@main'
+];
+
+// 探测函数：返回第一个可用的镜像
+async function detectFastestMirror() {
+    const testPath = '/img/sarch/char/1/1.png'; // 选择一个必定存在的小图片用于测试
+    const timeout = 3000; // 单个镜像超时时间
+
+    const promises = CDN_MIRRORS.map(async (mirror, index) => {
+        const url = mirror + testPath;
+        try {
+            await new Promise((resolve, reject) => {
+                const img = new Image();
+                const timer = setTimeout(() => reject(new Error('timeout')), timeout);
+                img.onload = () => {
+                    clearTimeout(timer);
+                    resolve();
+                };
+                img.onerror = () => {
+                    clearTimeout(timer);
+                    reject(new Error('error'));
+                };
+                img.src = url;
+            });
+            console.log(`✅ 镜像可用 (${index + 1}/${CDN_MIRRORS.length}): ${mirror}`);
+            return mirror;
+        } catch (e) {
+            console.warn(`❌ 镜像不可用 (${index + 1}/${CDN_MIRRORS.length}): ${mirror}`);
+            return null;
+        }
+    });
+
+    // 等待第一个成功的镜像
+    for (const promise of promises) {
+        const result = await promise;
+        if (result) return result;
+    }
+    // 全部失败则返回第一个（原始CDN）
+    console.error('所有镜像均不可用，回退到原始CDN');
+    return CDN_MIRRORS[CDN_MIRRORS.length - 1];
+}
+
+// 全局变量，将在初始化后赋值
+let CDN_BASE = CDN_MIRRORS[0];
+
+// 启动探测并更新 CDN_BASE
+(async function initCDN() {
+    const bestMirror = await detectFastestMirror();
+    CDN_BASE = bestMirror;
+    window.CDN_BASE = bestMirror; // 挂载到全局供其他脚本使用
+    console.log(`🚀 最终使用的CDN: ${CDN_BASE}`);
+})();
+
 window.AppData = {
    cardConfigs:  [
         {
