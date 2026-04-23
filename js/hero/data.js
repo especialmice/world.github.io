@@ -2935,7 +2935,7 @@ export const AppData = {
     };
 
 // 挂载到全局以兼容未模块化的代码（若有）
-window.AppData = AppData;
+
 
 // 启动探测并更新 CDN_BASE（异步，不阻塞）
 (async function initCDN() {
