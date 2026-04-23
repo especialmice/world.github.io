@@ -1,6 +1,5 @@
-// ==================== data.js ====================
 // 镜像列表
-export const CDN_MIRRORS = [
+const CDN_MIRRORS = [
     'https://cdn.osyb.cn/gh/especialmice/world.github.io@main',
     'https://jsd.cdn.zzko.cn/gh/especialmice/world.github.io@main',
     'https://jsd.onmicrosoft.cn/gh/especialmice/world.github.io@main',
@@ -8,10 +7,11 @@ export const CDN_MIRRORS = [
 ];
 
 // 探测函数：返回第一个可用的镜像
-export async function detectFastestMirror() {
-    const testPath = '/img/sarch/char/1/1.png';
-    const timeout = 3000;
-    const promises = CDN_MIRRORS.map(async (mirror) => {
+async function detectFastestMirror() {
+    const testPath = '/img/sarch/char/1/1.png'; // 选择一个必定存在的小图片用于测试
+    const timeout = 3000; // 单个镜像超时时间
+
+    const promises = CDN_MIRRORS.map(async (mirror, index) => {
         const url = mirror + testPath;
         try {
             await new Promise((resolve, reject) => {
@@ -27,25 +27,36 @@ export async function detectFastestMirror() {
                 };
                 img.src = url;
             });
-            console.log(`✅ 镜像可用: ${mirror}`);
+            console.log(`✅ 镜像可用 (${index + 1}/${CDN_MIRRORS.length}): ${mirror}`);
             return mirror;
         } catch (e) {
-            console.warn(`❌ 镜像不可用: ${mirror}`);
+            console.warn(`❌ 镜像不可用 (${index + 1}/${CDN_MIRRORS.length}): ${mirror}`);
             return null;
         }
     });
+
+    // 等待第一个成功的镜像
     for (const promise of promises) {
         const result = await promise;
         if (result) return result;
     }
+    // 全部失败则返回第一个（原始CDN）
     console.error('所有镜像均不可用，回退到原始CDN');
     return CDN_MIRRORS[CDN_MIRRORS.length - 1];
 }
 
-export let CDN_BASE = CDN_MIRRORS[0];
+// 全局变量，将在初始化后赋值
+let CDN_BASE = CDN_MIRRORS[0];
 
-// 应用数据
-export const AppData = {
+// 启动探测并更新 CDN_BASE
+(async function initCDN() {
+    const bestMirror = await detectFastestMirror();
+    CDN_BASE = bestMirror;
+    window.CDN_BASE = bestMirror; // 挂载到全局供其他脚本使用
+    console.log(`🚀 最终使用的CDN: ${CDN_BASE}`);
+})();
+
+window.AppData = {
    cardConfigs:  [
         {
             // 卡片0：星导使
@@ -2848,7 +2859,7 @@ export const AppData = {
 
         ]
     },
-    abilitytxticon: {
+        abilitytxticon: {
     Attributeicon: [
         { value: '火', left: CDN_BASE + '/img/sarch/txticon/attributeicon/火.png', right: CDN_BASE + '/img/sarch/txticon/attributeicon/火耐down.png' },
         { value: '水', left: CDN_BASE + '/img/sarch/txticon/attributeicon/水.png', right: CDN_BASE + '/img/sarch/txticon/attributeicon/水耐down.png' },
@@ -2866,7 +2877,7 @@ export const AppData = {
         { image: CDN_BASE + '/img/sarch/txticon/general/攻击力提升.png', label: '攻击力提升', value: '攻击力提升', txt: '攻击力提升' },
         { image: CDN_BASE + '/img/sarch/txticon/general/攻击力down.png', label: '攻击力降低', value: '攻击力降低', txt: '攻击力降低' }
     ]
-    },
+},
             
     
         // ==================== 全局按钮组与文本图标数据（供右侧使用） ====================
@@ -2932,15 +2943,5 @@ export const AppData = {
             { value: 'info', title: '情报' },
             { value: 'info', title: '能力效果' }
         ],
-    };
-
-// 挂载到全局以兼容未模块化的代码（若有）
-window.AppData = AppData;
-
-// 启动探测并更新 CDN_BASE（异步，不阻塞）
-(async function initCDN() {
-    const bestMirror = await detectFastestMirror();
-    CDN_BASE = bestMirror;
-    window.CDN_BASE = bestMirror;
-    console.log(`🚀 最终使用的CDN: ${CDN_BASE}`);
-})();
+        
+    }
