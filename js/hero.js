@@ -26,6 +26,21 @@
         name: null
     };
 
+
+    // ==================== 关闭右侧详情区域 ====================
+function closeRightDetail() {
+    if (isMobileMode) {
+        // 移动端：清空 mobileRightContainer，恢复左侧视图
+        mobileRightContainer.innerHTML = '';
+        leftTopArea.classList.remove('show-mobile');
+        leftTopArea.classList.remove('hide-original');
+        // 可选：如果右侧容器没有任何内容，可以重置右侧占位符（但移动端不显示右侧面板，非必须）
+    } else {
+        // 桌面端：重置右侧面板为占位符
+        rightPanel.innerHTML = '<div class="right-placeholder">✦ 点击左侧卡片开启星见之旅 ✦</div>';
+    }
+}
+
     // ---------- 加载动画辅助函数 ----------
     function createLoaderElement() {
         const wrapper = document.createElement('div');
@@ -770,6 +785,15 @@
                     }
                 });
             }
+            // 添加关闭按钮
+const closeBtn = document.createElement('button');
+closeBtn.textContent = '✖ 关闭';
+closeBtn.className = 'detail-close-btn';
+closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeRightDetail();
+});
+fragment.appendChild(closeBtn);
 
             // 等待图片加载完成后替换内容
             replaceContentAfterImagesLoaded(div2, fragment);
