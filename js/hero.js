@@ -1,14 +1,15 @@
 (function() {
-    // 从全局获取数据
+    // ==================== 依赖数据 ====================
     const { cardConfigs, squareinfoCards, evenButtonGroups, sarchtitle } = window.AppData;
-    // ==================== DOM 元素获取 ====================
+
+    // ==================== DOM 元素 ====================
     const dynamicArea = document.getElementById('dynamicArea');
     const globalBackBtn = document.getElementById('globalBackBtn');
     const rightPanel = document.getElementById('rightPanel');
     const leftTopArea = document.getElementById('leftTopArea');
     const mobileRightContainer = document.getElementById('mobileRightContainer');
 
-    // ==================== 状态变量 ====================
+    // ==================== 全局状态 ====================
     let currentView = 'initial';
     let activeCardIndex = -1;
     let isMobileMode = false;
@@ -26,22 +27,18 @@
         name: null
     };
 
-
     // ==================== 关闭右侧详情区域 ====================
-function closeRightDetail() {
-    if (isMobileMode) {
-        // 移动端：清空 mobileRightContainer，恢复左侧视图
-        mobileRightContainer.innerHTML = '';
-        leftTopArea.classList.remove('show-mobile');
-        leftTopArea.classList.remove('hide-original');
-        // 可选：如果右侧容器没有任何内容，可以重置右侧占位符（但移动端不显示右侧面板，非必须）
-    } else {
-        // 桌面端：重置右侧面板为占位符
-        rightPanel.innerHTML = '<div class="right-placeholder">✦ 点击左侧卡片开启星见之旅 ✦</div>';
+    function closeRightDetail() {
+        if (isMobileMode) {
+            mobileRightContainer.innerHTML = '';
+            leftTopArea.classList.remove('show-mobile');
+            leftTopArea.classList.remove('hide-original');
+        } else {
+            rightPanel.innerHTML = '<div class="right-placeholder">✦ 点击左侧卡片开启星见之旅 ✦</div>';
+        }
     }
-}
 
-    // ---------- 加载动画辅助函数 ----------
+    // ==================== 加载动画辅助函数 ====================
     function createLoaderElement() {
         const wrapper = document.createElement('div');
         wrapper.className = 'global-loader';
@@ -76,98 +73,85 @@ function closeRightDetail() {
         detailArea.appendChild(loader);
     }
 
-    // ---------- 核心：等待图片加载完成后替换内容 ----------
-    /**
-     * 将容器中的加载动画替换为给定的内容元素，并等待内容中所有图片加载完成
-     * @param {HTMLElement} container 显示加载动画的容器
-     * @param {HTMLElement|DocumentFragment} newContent 要放入的新内容
-     * @param {Function} callback 可选，在替换完成并显示后执行的回调
-     */
+    // ==================== 核心：等待图片加载完成后替换内容 ====================
     function replaceContentAfterImagesLoaded(container, newContent, callback) {
-    // 创建临时容器并挂载到 body（隐藏），确保背景图片请求被触发
-    const tempDiv = document.createElement('div');
-    tempDiv.style.position = 'absolute';
-    tempDiv.style.left = '-9999px';
-    tempDiv.style.top = '0';
-    tempDiv.style.width = '0';
-    tempDiv.style.height = '0';
-    tempDiv.style.overflow = 'hidden';
-    tempDiv.style.pointerEvents = 'none';
-    document.body.appendChild(tempDiv);
+        const tempDiv = document.createElement('div');
+        tempDiv.style.position = 'absolute';
+        tempDiv.style.left = '-9999px';
+        tempDiv.style.top = '0';
+        tempDiv.style.width = '0';
+        tempDiv.style.height = '0';
+        tempDiv.style.overflow = 'hidden';
+        tempDiv.style.pointerEvents = 'none';
+        document.body.appendChild(tempDiv);
 
-    if (newContent instanceof DocumentFragment) {
-        tempDiv.appendChild(newContent.cloneNode(true));
-    } else {
-        tempDiv.appendChild(newContent.cloneNode(true));
-    }
-
-    // 收集所有 <img> 标签的 src
-    const imgElements = tempDiv.querySelectorAll('img');
-    const imageUrls = new Set();
-    imgElements.forEach(img => {
-        if (img.src) imageUrls.add(img.src);
-    });
-
-    // 收集所有元素的背景图片 URL（通过 getComputedStyle，此时元素已在文档中）
-    const allElements = tempDiv.querySelectorAll('*');
-    allElements.forEach(el => {
-        const bgImage = window.getComputedStyle(el).backgroundImage;
-        if (bgImage && bgImage !== 'none') {
-            const match = bgImage.match(/url\(["']?([^"')]+)["']?\)/);
-            if (match && match[1]) {
-                imageUrls.add(match[1]);
-            }
-        }
-    });
-
-    const totalImages = imageUrls.size;
-    let loadedCount = 0;
-
-    function finalize() {
-        // 移除临时容器
-        document.body.removeChild(tempDiv);
-        // 替换真实内容
-        container.innerHTML = '';
         if (newContent instanceof DocumentFragment) {
-            container.appendChild(newContent);
+            tempDiv.appendChild(newContent.cloneNode(true));
         } else {
-            container.appendChild(newContent);
+            tempDiv.appendChild(newContent.cloneNode(true));
         }
-        if (callback) callback();
-    }
 
-    if (totalImages === 0) {
-        finalize();
-        return;
-    }
+        const imgElements = tempDiv.querySelectorAll('img');
+        const imageUrls = new Set();
+        imgElements.forEach(img => {
+            if (img.src) imageUrls.add(img.src);
+        });
 
-    const checkAllLoaded = () => {
-        loadedCount++;
-        if (loadedCount === totalImages) {
+        const allElements = tempDiv.querySelectorAll('*');
+        allElements.forEach(el => {
+            const bgImage = window.getComputedStyle(el).backgroundImage;
+            if (bgImage && bgImage !== 'none') {
+                const match = bgImage.match(/url\(["']?([^"')]+)["']?\)/);
+                if (match && match[1]) {
+                    imageUrls.add(match[1]);
+                }
+            }
+        });
+
+        const totalImages = imageUrls.size;
+        let loadedCount = 0;
+
+        function finalize() {
+            document.body.removeChild(tempDiv);
+            container.innerHTML = '';
+            if (newContent instanceof DocumentFragment) {
+                container.appendChild(newContent);
+            } else {
+                container.appendChild(newContent);
+            }
+            if (callback) callback();
+        }
+
+        if (totalImages === 0) {
             finalize();
+            return;
         }
-    };
 
-    // 为每个 URL 创建 Image 对象进行预加载监听
-    imageUrls.forEach(url => {
-        const img = new Image();
-        img.src = url;
-        if (img.complete) {
-            checkAllLoaded();
-        } else {
-            img.addEventListener('load', checkAllLoaded, { once: true });
-            img.addEventListener('error', checkAllLoaded, { once: true });
-        }
-    });
+        const checkAllLoaded = () => {
+            loadedCount++;
+            if (loadedCount === totalImages) {
+                finalize();
+            }
+        };
 
-    // 超时保护（延长至 8 秒，适应慢速网络）
-    setTimeout(() => {
-        if (loadedCount < totalImages) {
-            console.warn('图片加载超时，强制显示内容');
-            finalize();
-        }
-    }, 20000);
-}
+        imageUrls.forEach(url => {
+            const img = new Image();
+            img.src = url;
+            if (img.complete) {
+                checkAllLoaded();
+            } else {
+                img.addEventListener('load', checkAllLoaded, { once: true });
+                img.addEventListener('error', checkAllLoaded, { once: true });
+            }
+        });
+
+        setTimeout(() => {
+            if (loadedCount < totalImages) {
+                console.warn('图片加载超时，强制显示内容');
+                finalize();
+            }
+        }, 20000);
+    }
 
     // ==================== 辅助函数 ====================
     function createOddItem(title, leftImg, rightImg) {
@@ -691,6 +675,8 @@ function closeRightDetail() {
         container.appendChild(blockDiv);
     }
 
+    let currentUpdateDetailArea = null; // 用于保存 updateDetailArea 引用
+
     function renderRightModal2(card) {
         showRightLoading();
 
@@ -721,7 +707,6 @@ function closeRightDetail() {
         function updateDetailArea(buttonValue) {
             showDetailAreaLoading(div2);
 
-            // 构建新内容
             const fragment = document.createDocumentFragment();
             const cardId = card.id;
             let targetArray = [];
@@ -785,19 +770,21 @@ function closeRightDetail() {
                     }
                 });
             }
-            // 添加关闭按钮
-const closeBtn = document.createElement('button');
-closeBtn.textContent = '✖ 关闭';
-closeBtn.className = 'detail-close-btn';
-closeBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    closeRightDetail();
-});
-fragment.appendChild(closeBtn);
 
-            // 等待图片加载完成后替换内容
+            // 添加关闭按钮
+            const closeBtn = document.createElement('button');
+            closeBtn.textContent = '✖ 关闭';
+            closeBtn.className = 'detail-close-btn';
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeRightDetail();
+            });
+            fragment.appendChild(closeBtn);
+
             replaceContentAfterImagesLoaded(div2, fragment);
         }
+
+        currentUpdateDetailArea = updateDetailArea;
 
         const buttons = modal2Container.querySelectorAll('.right-modal2-right-col button');
         buttons.forEach(btn => {
@@ -811,7 +798,6 @@ fragment.appendChild(closeBtn);
         });
 
         const container = isMobileMode ? mobileRightContainer : rightPanel;
-        // 等待右侧主内容图片加载完成
         replaceContentAfterImagesLoaded(container, modal2Container, () => {
             updateDetailArea('info');
             if (isMobileMode) {
@@ -1029,7 +1015,6 @@ fragment.appendChild(closeBtn);
         showLeftLoading();
 
         const modal1Element = buildModal1View(cardIndex);
-        // 等待图片加载完成后替换
         replaceContentAfterImagesLoaded(dynamicArea, modal1Element, () => {
             currentView = 'modal1';
             activeCardIndex = cardIndex;
@@ -1148,6 +1133,7 @@ fragment.appendChild(closeBtn);
         }
     }
 
+    // ==================== 初始化 ====================
     function init() {
         const initialClone = dynamicArea.cloneNode(true);
         initialHTML = initialClone.innerHTML;
