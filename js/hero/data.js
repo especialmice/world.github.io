@@ -46,53 +46,54 @@ export let CDN_BASE = CDN_MIRRORS[0];
 
 // 应用数据
 export const AppData = {
+
    cardConfigs:  [
         {
             // 卡片0：星导使
             headerBg: CDN_BASE + '/img/sarch/title/char/keyword_list_character_header_background2.png',
             rightheaderBg: CDN_BASE + '/img/sarch/title/char/keyword_details_character_background.png', // 右侧顶部背景图（可添加路径）
             squareCards: [
-                { id: 'char1', name: '阿尔克', cv: '逢坂良太', start: '4', Attribute: '火', race: '人', gender: '男 ' , cdbg1: CDN_BASE + '/img/sarch/char/1/1.png', cdbg2: CDN_BASE + '/img/sarch/char/1/2.png' ,cg:CDN_BASE + '/img/sarch/char/1/cg/1.png'},
-                { id: 'char2', name: '克拉莉丝', cv:'佐仓绫音', start: '5', Attribute: '火', race: '人', race2: ' 精灵', gender: ' 女' ,cdbg1: CDN_BASE + '/img/sarch/char/2/1.png', cdbg2: CDN_BASE + '/img/sarch/char/2/2.png',cg:CDN_BASE + '/img/sarch/char/2/cg/1.png' },
-                { id: 'char3', name: '玛丽安', cv:'山本希望',start: '5', Attribute: '火', race: '人', gender: ' 女' ,cdbg1: CDN_BASE + '/img/sarch/char/3/1.png', cdbg2: CDN_BASE + '/img/sarch/char/3/2.png',cg:CDN_BASE + '/img/sarch/char/3/cg/1.png' },
-                { id: 'char6', name: '塞拉', cv:'悠木碧',start: '5', Attribute: '雷', race: '人', race2: ' 机械',gender: '女 ' , cdbg1: CDN_BASE + '/img/sarch/char/6/1.png', cdbg2: CDN_BASE + '/img/sarch/char/6/2.png' ,cg:CDN_BASE + '/img/sarch/char/6/cg/1.png'},
-                { id: 'char7', name: '牡丹', cv:'竹达彩奈',start: '5', Attribute: '雷', race: '人',gender: '女 ' , cdbg1: CDN_BASE + '/img/sarch/char/7/1.png', cdbg2: CDN_BASE + '/img/sarch/char/7/2.png',cg:CDN_BASE + '/img/sarch/char/7/cg/1.png' },
-                { id: 'char14', name: '赛法', cv:'五十岚裕美',start: '5', Attribute: '水', race: '人', race2: ' 精灵',gender: ' 女' , cdbg1: CDN_BASE + '/img/sarch/char/14/1.png', cdbg2: CDN_BASE + '/img/sarch/char/14/2.png',cg:CDN_BASE + '/img/sarch/char/14/cg/1.png' },
-                { id: 'char15', name: '雷拉斯', cv:'齐藤壮马',start: '5', Attribute: '水', race: '人', gender: '男 ' ,cdbg1: CDN_BASE + '/img/sarch/char/15/1.png', cdbg2: CDN_BASE + '/img/sarch/char/15/2.png',cg:CDN_BASE + '/img/sarch/char/15/cg/1.png' },
-                { id: 'char16', name: '罗尔夫', cv:'上田燿司',start: '5', Attribute: '火', race: '人', race2: ' 兽',gender: '男 ' , cdbg1: CDN_BASE + '/img/sarch/char/16/1.png', cdbg2: CDN_BASE + '/img/sarch/char/16/2.png',cg:CDN_BASE + '/img/sarch/char/16/cg/1.png' },
-                { id: 'char20', name: '雷恩', cv:'稻田彻',start: '5', Attribute: '风', race: '人',gender: '男 ' ,cdbg1: CDN_BASE + '/img/sarch/char/20/1.png', cdbg2: CDN_BASE + '/img/sarch/char/20/2.png' ,cg:CDN_BASE + '/img/sarch/char/20/cg/1.png'},
-                { id: 'char21', name: '西微', cv:'本渡枫',start: '5', Attribute: '风', race: '人', race2: ' 精灵', gender: '女 ' ,cdbg1: CDN_BASE + '/img/sarch/char/21/1.png', cdbg2: CDN_BASE + '/img/sarch/char/21/2.png' ,cg:CDN_BASE + '/img/sarch/char/21/cg/1.png' },
-                { id: 'char25', name: '稻穗', cv:'小泽亚李',start: '5', Attribute: '光', race: '妖', gender: '女 ' , cdbg1: CDN_BASE + '/img/sarch/char/25/1.png', cdbg2: CDN_BASE + '/img/sarch/char/25/2.png' ,cg:CDN_BASE + '/img/sarch/char/25/cg/1.png' },
-                { id: 'char26', name: '塔吉斯', cv:'小西克幸',start: '5', Attribute: '光', race: '人', race2: ' 机械',gender: ' 男' , cdbg1: CDN_BASE + '/img/sarch/char/26/1.png', cdbg2: CDN_BASE + '/img/sarch/char/26/2.png' ,cg:CDN_BASE + '/img/sarch/char/26/cg/1.png'},
-                { id: 'char30', name: '卡菈', cv:'高野麻里佳＆矢尾一树',start: '5', Attribute: '暗', race: '人', race2: ' 精灵', gender: '女 ' ,cdbg1: CDN_BASE + '/img/sarch/char/30/1.png', cdbg2: CDN_BASE + '/img/sarch/char/30/2.png',cg:CDN_BASE + '/img/sarch/char/30/cg/1.png' },
-                { id: 'char31', name: '奥莉维尔', cv:'坂本真绫',start: '5', Attribute: '暗', race: '人',  race2: ' 精灵',gender: ' 女' ,cdbg1: CDN_BASE + '/img/sarch/char/31/1.png', cdbg2: CDN_BASE + '/img/sarch/char/31/2.png' ,cg:CDN_BASE + '/img/sarch/char/31/cg/1.png'},
-                { id: 'char35', name: '阿须桐丸', cv:'山下大辉',start: '4', Attribute: '火', race: '人', gender: ' 男' ,cdbg1: CDN_BASE + '/img/sarch/char/35/1.png', cdbg2: CDN_BASE + '/img/sarch/char/35/2.png',cg:CDN_BASE + '/img/sarch/char/35/cg/1.png' },
-                { id: 'char39', name: '爱丽丝', cv:'大久保瑠美',start: '4', Attribute: '水', race: '人', race2: '精灵', gender: ' 女' ,cdbg1: CDN_BASE + '/img/sarch/char/39/1.png', cdbg2: CDN_BASE + '/img/sarch/char/39/2.png',cg:CDN_BASE + '/img/sarch/char/39/cg/1.png' },
-                { id: 'char40', name: '夏农', cv:'高木美佑',start: '4', Attribute: '水', race: '人', gender: ' 女' ,cdbg1: CDN_BASE + '/img/sarch/char/40/1.png', cdbg2: CDN_BASE + '/img/sarch/char/40/2.png' ,cg:CDN_BASE + '/img/sarch/char/40/cg/1.png'},
-                { id: 'char44', name: '艾琳诺儿', cv:'高桥李依',start: '4', Attribute: '雷', race: '人', race2: '精灵', gender: ' 女' ,cdbg1: CDN_BASE + '/img/sarch/char/44/1.png', cdbg2: CDN_BASE + '/img/sarch/char/44/2.png' ,cg:CDN_BASE + '/img/sarch/char/44/cg/1.png'},
-                { id: 'char45', name: '杰', cv:'下崎纮史',start: '4', Attribute: '雷', race: '人',race2: '兽', gender: ' 男' ,cdbg1: CDN_BASE + '/img/sarch/char/45/1.png', cdbg2: CDN_BASE + '/img/sarch/char/45/2.png' ,cg:CDN_BASE + '/img/sarch/char/45/cg/1.png'},
-                { id: 'char49', name: '宗士郎', cv:'代永翼',start: '4', Attribute: '风', race: '人', gender: ' 男' ,cdbg1: CDN_BASE + '/img/sarch/char/49/1.png', cdbg2: CDN_BASE + '/img/sarch/char/49/2.png' ,cg:CDN_BASE + '/img/sarch/char/49/cg/1.png'},
-                { id: 'char50', name: '梅露希儿', cv:'芹泽优',start: '4', Attribute: '风', race: '人',race2: '精灵', gender: ' 女' ,cdbg1: CDN_BASE + '/img/sarch/char/50/1.png', cdbg2: CDN_BASE + '/img/sarch/char/50/2.png' ,cg:CDN_BASE + '/img/sarch/char/50/cg/1.png'},
-                { id: 'char54', name: '里昂', cv:'泽城千春',start: '4', Attribute: '暗', race: '人', race2: '精灵',gender: ' 男' ,cdbg1: CDN_BASE + '/img/sarch/char/54/1.png', cdbg2: CDN_BASE + '/img/sarch/char/54/2.png' ,cg:CDN_BASE + '/img/sarch/char/54/cg/1.png'},
-                { id: 'char55', name: '尤维尔', cv:'逢坂良太',start: '4', Attribute: '暗', race: '人', gender: ' 男' ,cdbg1: CDN_BASE + '/img/sarch/char/55/1.png', cdbg2: CDN_BASE + '/img/sarch/char/55/2.png',cg:CDN_BASE + '/img/sarch/char/55/cg/1.png' },
+                { id: 'char1', name: '阿尔克', cv: '逢坂良太', start: '4', Attribute: '火', race: '人', gender: '男' , cdbg1: CDN_BASE + '/img/sarch/char/1/1.png', cdbg2: CDN_BASE + '/img/sarch/char/1/2.png' ,cg:CDN_BASE + '/img/sarch/char/1/cg/1.png'},
+                { id: 'char2', name: '克拉莉丝', cv:'佐仓绫音', start: '5', Attribute: '火', race: '人', race2: '精灵', gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/2/1.png', cdbg2: CDN_BASE + '/img/sarch/char/2/2.png',cg:CDN_BASE + '/img/sarch/char/2/cg/1.png' },
+                { id: 'char3', name: '玛丽安', cv:'山本希望',start: '5', Attribute: '火', race: '人', gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/3/1.png', cdbg2: CDN_BASE + '/img/sarch/char/3/2.png',cg:CDN_BASE + '/img/sarch/char/3/cg/1.png' },
+                { id: 'char6', name: '塞拉', cv:'悠木碧',start: '5', Attribute: '雷', race: '人', race2: '机械',gender: '女' , cdbg1: CDN_BASE + '/img/sarch/char/6/1.png', cdbg2: CDN_BASE + '/img/sarch/char/6/2.png' ,cg:CDN_BASE + '/img/sarch/char/6/cg/1.png'},
+                { id: 'char7', name: '牡丹', cv:'竹达彩奈',start: '5', Attribute: '雷', race: '人',gender: '女' , cdbg1: CDN_BASE + '/img/sarch/char/7/1.png', cdbg2: CDN_BASE + '/img/sarch/char/7/2.png',cg:CDN_BASE + '/img/sarch/char/7/cg/1.png' },
+                { id: 'char14', name: '赛法', cv:'五十岚裕美',start: '5', Attribute: '水', race: '人', race2: '精灵',gender: '女' , cdbg1: CDN_BASE + '/img/sarch/char/14/1.png', cdbg2: CDN_BASE + '/img/sarch/char/14/2.png',cg:CDN_BASE + '/img/sarch/char/14/cg/1.png' },
+                { id: 'char15', name: '雷拉斯', cv:'齐藤壮马',start: '5', Attribute: '水', race: '人', gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/15/1.png', cdbg2: CDN_BASE + '/img/sarch/char/15/2.png',cg:CDN_BASE + '/img/sarch/char/15/cg/1.png' },
+                { id: 'char16', name: '罗尔夫', cv:'上田燿司',start: '5', Attribute: '火', race: '人', race2: '兽',gender: '男' , cdbg1: CDN_BASE + '/img/sarch/char/16/1.png', cdbg2: CDN_BASE + '/img/sarch/char/16/2.png',cg:CDN_BASE + '/img/sarch/char/16/cg/1.png' },
+                { id: 'char20', name: '雷恩', cv:'稻田彻',start: '5', Attribute: '风', race: '人',gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/20/1.png', cdbg2: CDN_BASE + '/img/sarch/char/20/2.png' ,cg:CDN_BASE + '/img/sarch/char/20/cg/1.png'},
+                { id: 'char21', name: '西微', cv:'本渡枫',start: '5', Attribute: '风', race: '人', race2: '精灵', gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/21/1.png', cdbg2: CDN_BASE + '/img/sarch/char/21/2.png' ,cg:CDN_BASE + '/img/sarch/char/21/cg/1.png' },
+                { id: 'char25', name: '稻穗', cv:'小泽亚李',start: '5', Attribute: '光', race: '妖', gender: '女' , cdbg1: CDN_BASE + '/img/sarch/char/25/1.png', cdbg2: CDN_BASE + '/img/sarch/char/25/2.png' ,cg:CDN_BASE + '/img/sarch/char/25/cg/1.png' },
+                { id: 'char26', name: '塔吉斯', cv:'小西克幸',start: '5', Attribute: '光', race: '人', race2: '机械',gender: '男' , cdbg1: CDN_BASE + '/img/sarch/char/26/1.png', cdbg2: CDN_BASE + '/img/sarch/char/26/2.png' ,cg:CDN_BASE + '/img/sarch/char/26/cg/1.png'},
+                { id: 'char30', name: '卡菈', cv:'高野麻里佳＆矢尾一树',start: '5', Attribute: '暗', race: '人', race2: '精灵', gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/30/1.png', cdbg2: CDN_BASE + '/img/sarch/char/30/2.png',cg:CDN_BASE + '/img/sarch/char/30/cg/1.png' },
+                { id: 'char31', name: '奥莉维尔', cv:'坂本真绫',start: '5', Attribute: '暗', race: '人',  race2: '精灵',gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/31/1.png', cdbg2: CDN_BASE + '/img/sarch/char/31/2.png' ,cg:CDN_BASE + '/img/sarch/char/31/cg/1.png'},
+                { id: 'char35', name: '阿须桐丸', cv:'山下大辉',start: '4', Attribute: '火', race: '人', gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/35/1.png', cdbg2: CDN_BASE + '/img/sarch/char/35/2.png',cg:CDN_BASE + '/img/sarch/char/35/cg/1.png' },
+                { id: 'char39', name: '爱丽丝', cv:'大久保瑠美',start: '4', Attribute: '水', race: '人', race2: '精灵', gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/39/1.png', cdbg2: CDN_BASE + '/img/sarch/char/39/2.png',cg:CDN_BASE + '/img/sarch/char/39/cg/1.png' },
+                { id: 'char40', name: '夏农', cv:'高木美佑',start: '4', Attribute: '水', race: '人', gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/40/1.png', cdbg2: CDN_BASE + '/img/sarch/char/40/2.png' ,cg:CDN_BASE + '/img/sarch/char/40/cg/1.png'},
+                { id: 'char44', name: '艾琳诺儿', cv:'高桥李依',start: '4', Attribute: '雷', race: '人', race2: '精灵', gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/44/1.png', cdbg2: CDN_BASE + '/img/sarch/char/44/2.png' ,cg:CDN_BASE + '/img/sarch/char/44/cg/1.png'},
+                { id: 'char45', name: '杰', cv:'下崎纮史',start: '4', Attribute: '雷', race: '人',race2: '兽', gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/45/1.png', cdbg2: CDN_BASE + '/img/sarch/char/45/2.png' ,cg:CDN_BASE + '/img/sarch/char/45/cg/1.png'},
+                { id: 'char49', name: '宗士郎', cv:'代永翼',start: '4', Attribute: '风', race: '人', gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/49/1.png', cdbg2: CDN_BASE + '/img/sarch/char/49/2.png' ,cg:CDN_BASE + '/img/sarch/char/49/cg/1.png'},
+                { id: 'char50', name: '梅露希儿', cv:'芹泽优',start: '4', Attribute: '风', race: '人',race2: '精灵', gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/50/1.png', cdbg2: CDN_BASE + '/img/sarch/char/50/2.png' ,cg:CDN_BASE + '/img/sarch/char/50/cg/1.png'},
+                { id: 'char54', name: '里昂', cv:'泽城千春',start: '4', Attribute: '暗', race: '人', race2: '精灵',gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/54/1.png', cdbg2: CDN_BASE + '/img/sarch/char/54/2.png' ,cg:CDN_BASE + '/img/sarch/char/54/cg/1.png'},
+                { id: 'char55', name: '尤维尔', cv:'逢坂良太',start: '4', Attribute: '暗', race: '人', gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/55/1.png', cdbg2: CDN_BASE + '/img/sarch/char/55/2.png',cg:CDN_BASE + '/img/sarch/char/55/cg/1.png' },
                 { id: 'char59', name: '芬', cv:'渡边纮',start: '4', Attribute: '光', race: '人', gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/59/1.png', cdbg2: CDN_BASE + '/img/sarch/char/59/2.png' ,cg:CDN_BASE + '/img/sarch/char/59/cg/1.png'},
-                { id: 'char60', name: '绮拉', cv:'山本希望',start: '4', Attribute: '光', race: '人', gender: ' 女' ,cdbg1: CDN_BASE + '/img/sarch/char/60/1.png', cdbg2: CDN_BASE + '/img/sarch/char/60/2.png' ,cg:CDN_BASE + '/img/sarch/char/60/cg/1.png'},
+                { id: 'char60', name: '绮拉', cv:'山本希望',start: '4', Attribute: '光', race: '人', gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/60/1.png', cdbg2: CDN_BASE + '/img/sarch/char/60/2.png' ,cg:CDN_BASE + '/img/sarch/char/60/cg/1.png'},
                 { id: 'char64', name: '哈修', cv:'长南翔太',start: '3', Attribute: '火', race: '人', gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/64/1.png', cdbg2: CDN_BASE + '/img/sarch/char/64/2.png' ,cg:CDN_BASE + '/img/sarch/char/64/cg/1.png'},
                 { id: 'char65', name: '仁', cv:'佐佐木琢磨',start: '3', Attribute: '火', race: '人', gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/65/1.png', cdbg2: CDN_BASE + '/img/sarch/char/65/2.png' ,cg:CDN_BASE + '/img/sarch/char/65/cg/1.png'},
-                { id: 'char69', name: '艾尔莎', cv:'明坂聪美',start: '3', Attribute: '水', race: '人', gender: ' 女' ,cdbg1: CDN_BASE + '/img/sarch/char/69/1.png', cdbg2: CDN_BASE + '/img/sarch/char/69/2.png' ,cg:CDN_BASE + '/img/sarch/char/69/cg/1.png'},
+                { id: 'char69', name: '艾尔莎', cv:'明坂聪美',start: '3', Attribute: '水', race: '人', gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/69/1.png', cdbg2: CDN_BASE + '/img/sarch/char/69/2.png' ,cg:CDN_BASE + '/img/sarch/char/69/cg/1.png'},
                 { id: 'char70', name: '克劳斯', cv:'三宅健太',start: '3', Attribute: '水', race: '人', race2: '兽', gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/70/1.png', cdbg2: CDN_BASE + '/img/sarch/char/70/2.png',cg:CDN_BASE + '/img/sarch/char/70/cg/1.png' },
-                { id: 'char74', name: '黑', cv:'畠中祐',start: '3', Attribute: '雷', race: '人',race2: '兽', gender: ' 男' ,cdbg1: CDN_BASE + '/img/sarch/char/74/1.png', cdbg2: CDN_BASE + '/img/sarch/char/74/2.png' ,cg:CDN_BASE + '/img/sarch/char/74/cg/1.png'},
-                { id: 'char75', name: '阿尔伯特', cv:'长南翔太',start: '3', Attribute: '雷', race: '人', race2: '兽', gender: ' 男' ,cdbg1: CDN_BASE + '/img/sarch/char/75/1.png', cdbg2: CDN_BASE + '/img/sarch/char/75/2.png' ,cg:CDN_BASE + '/img/sarch/char/75/cg/1.png'},
+                { id: 'char74', name: '黑', cv:'畠中祐',start: '3', Attribute: '雷', race: '人',race2: '兽', gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/74/1.png', cdbg2: CDN_BASE + '/img/sarch/char/74/2.png' ,cg:CDN_BASE + '/img/sarch/char/74/cg/1.png'},
+                { id: 'char75', name: '阿尔伯特', cv:'长南翔太',start: '3', Attribute: '雷', race: '人', race2: '兽', gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/75/1.png', cdbg2: CDN_BASE + '/img/sarch/char/75/2.png' ,cg:CDN_BASE + '/img/sarch/char/75/cg/1.png'},
                 { id: 'char79', name: '奈丝卡', cv:'高桥李依',start: '3', Attribute: '风', race: '人', gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/79/1.png', cdbg2: CDN_BASE + '/img/sarch/char/79/2.png',cg:CDN_BASE + '/img/sarch/char/79/cg/1.png' },
                 { id: 'char80', name: '缪', cv:'加藤英美里',start: '3', Attribute: '风', race: '人',race2: '兽', gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/80/1.png', cdbg2: CDN_BASE + '/img/sarch/char/80/2.png',cg:CDN_BASE + '/img/sarch/char/80/cg/1.png' },
                 { id: 'char84', name: '欧雷欧', cv:'山本希望',start: '3', Attribute: '光', race: '人',  race2: '兽',gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/84/1.png', cdbg2: CDN_BASE + '/img/sarch/char/84/2.png' ,cg:CDN_BASE + '/img/sarch/char/84/cg/1.png'},
-                { id: 'char85', name: '劳尔', cv:'伊藤健太郎',start: '3', Attribute: '光', race: '人', gender: ' 男' ,cdbg1: CDN_BASE + '/img/sarch/char/85/1.png', cdbg2: CDN_BASE + '/img/sarch/char/85/2.png',cg:CDN_BASE + '/img/sarch/char/85/cg/1.png' },
-                { id: 'char86', name: '法露伽', cv:'东城日沙子',start: '3', Attribute: '暗', race: '人', gender: ' 女' ,cdbg1: CDN_BASE + '/img/sarch/char/86/1.png', cdbg2: CDN_BASE + '/img/sarch/char/86/2.png',cg:CDN_BASE + '/img/sarch/char/86/cg/1.png' },
-                { id: 'char90', name: '阿迪尔', cv:'最上嗣生',start: '3', Attribute: '暗', race: '人', gender: ' 男' ,cdbg1: CDN_BASE + '/img/sarch/char/90/1.png', cdbg2: CDN_BASE + '/img/sarch/char/90/2.png',cg:CDN_BASE + '/img/sarch/char/90/cg/1.png' },
-                { id: 'char91', name: 'C·F·奇迹', cv:'斗和奇迹',start: '2', Attribute: '风', race: '机械', gender: ' 女' ,cdbg1: CDN_BASE + '/img/sarch/char/91/1.png', cdbg2: CDN_BASE + '/img/sarch/char/91/2.png' ,cg:CDN_BASE + '/img/sarch/char/91/cg/1.png'},
+                { id: 'char85', name: '劳尔', cv:'伊藤健太郎',start: '3', Attribute: '光', race: '人', gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/85/1.png', cdbg2: CDN_BASE + '/img/sarch/char/85/2.png',cg:CDN_BASE + '/img/sarch/char/85/cg/1.png' },
+                { id: 'char86', name: '法露伽', cv:'东城日沙子',start: '3', Attribute: '暗', race: '人', gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/86/1.png', cdbg2: CDN_BASE + '/img/sarch/char/86/2.png',cg:CDN_BASE + '/img/sarch/char/86/cg/1.png' },
+                { id: 'char90', name: '阿迪尔', cv:'最上嗣生',start: '3', Attribute: '暗', race: '人', gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/90/1.png', cdbg2: CDN_BASE + '/img/sarch/char/90/2.png',cg:CDN_BASE + '/img/sarch/char/90/cg/1.png' },
+                { id: 'char91', name: 'C·F·奇迹', cv:'斗和奇迹',start: '2', Attribute: '风', race: '机械', gender: '女' ,cdbg1: CDN_BASE + '/img/sarch/char/91/1.png', cdbg2: CDN_BASE + '/img/sarch/char/91/2.png' ,cg:CDN_BASE + '/img/sarch/char/91/cg/1.png'},
                 { id: 'char92', name: '魔像', start: '2', Attribute: '火', race: '机械',gender: '男' ,cdbg1: CDN_BASE + '/img/sarch/char/92/1.png', cdbg2: CDN_BASE + '/img/sarch/char/92/2.png' ,cg:CDN_BASE + '/img/sarch/char/92/cg/1.png'},
-                { id: 'char93', name: '红波露', start: '1', Attribute: '火', race: '精灵', gender: ' 其他' ,cdbg1: CDN_BASE + '/img/sarch/char/93/1.png', cdbg2: CDN_BASE + '/img/sarch/char/93/2.png',cg:CDN_BASE + '/img/sarch/char/93/cg/1.png' },
-                { id: 'char94', name: '蓝波露', start: '1', Attribute: '水', race: '精灵', gender: ' 其他' ,cdbg1: CDN_BASE + '/img/sarch/char/94/1.png', cdbg2: CDN_BASE + '/img/sarch/char/94/2.png' ,cg:CDN_BASE + '/img/sarch/char/94/cg/1.png'}
+                { id: 'char93', name: '红波露', start: '1', Attribute: '火', race: '精灵', gender: '其他' ,cdbg1: CDN_BASE + '/img/sarch/char/93/1.png', cdbg2: CDN_BASE + '/img/sarch/char/93/2.png',cg:CDN_BASE + '/img/sarch/char/93/cg/1.png' },
+                { id: 'char94', name: '蓝波露', start: '1', Attribute: '水', race: '精灵', gender: '其他' ,cdbg1: CDN_BASE + '/img/sarch/char/94/1.png', cdbg2: CDN_BASE + '/img/sarch/char/94/2.png' ,cg:CDN_BASE + '/img/sarch/char/94/cg/1.png'}
             ]
         },
         {
@@ -361,7 +362,7 @@ export const AppData = {
                                     },
                                     {
                                         title: '5',content: '',
-                                        texts: ['	Dash(冲刺)时，Combo + 10（CT:30秒）'],
+                                        texts: ['Dash(冲刺)时，Combo + 10（CT:30秒）'],
                                         
                                     },
                                     {
@@ -2848,7 +2849,7 @@ export const AppData = {
 
         ]
     },
-    abilitytxticon: {
+        abilitytxticon: {
     Attributeicon: [
         { value: '火', left: CDN_BASE + '/img/sarch/txticon/attributeicon/火.png', right: CDN_BASE + '/img/sarch/txticon/attributeicon/火耐down.png' },
         { value: '水', left: CDN_BASE + '/img/sarch/txticon/attributeicon/水.png', right: CDN_BASE + '/img/sarch/txticon/attributeicon/水耐down.png' },
@@ -2866,7 +2867,7 @@ export const AppData = {
         { image: CDN_BASE + '/img/sarch/txticon/general/攻击力提升.png', label: '攻击力提升', value: '攻击力提升', txt: '攻击力提升' },
         { image: CDN_BASE + '/img/sarch/txticon/general/攻击力down.png', label: '攻击力降低', value: '攻击力降低', txt: '攻击力降低' }
     ]
-    },
+},
             
     
         // ==================== 全局按钮组与文本图标数据（供右侧使用） ====================
@@ -2932,8 +2933,8 @@ export const AppData = {
             { value: 'info', title: '情报' },
             { value: 'info', title: '能力效果' }
         ],
-    };
-
+        
+    }
 // 挂载到全局以兼容未模块化的代码（若有）
 
 
