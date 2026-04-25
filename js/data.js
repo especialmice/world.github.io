@@ -59,7 +59,7 @@ let CDN_BASE = CDN_MIRRORS[0];
 window.AppData = {
    cardConfigs:  [
         {
-            // 卡片0：星导使
+            // 卡片0
             headerBg: CDN_BASE + '/img/sarch/title/char/keyword_list_character_header_background2.png',
             rightheaderBg: CDN_BASE + '/img/sarch/title/char/keyword_details_character_background.png', // 右侧顶部背景图（可添加路径）
             squareCards: [
@@ -107,7 +107,7 @@ window.AppData = {
             ]
         },
         {
-            // 卡片1：月影巫女
+            // 卡片1
             headerBg: CDN_BASE + '/img/sarch/title/weapon/w.png',
             rightheaderBg: CDN_BASE + '/img/sarch/title/right/2.png',
             squareCards: [
@@ -141,7 +141,7 @@ window.AppData = {
                ]
         },
         {
-            // 卡片2：焰之剑豪 (数据3)
+            // 卡片2
             headerBg: CDN_BASE + '/img/sarch/title/world/keyword_list_world_header_background2.png',
             
             squareCards: [
