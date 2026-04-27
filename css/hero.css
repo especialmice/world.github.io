@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* 避免拖动/选中文本，提升点击感 */
+    user-select: none;  /* 避免拖动/选中文本，提升点击感 */
 }
 
 /* 基础页面背景与字体 */

@@ -66,7 +66,7 @@
         return sqCard;
     };
 
-    // 构建模态框1（卡片网格视图）
+    // 构建（卡片网格视图）
     WF.view.buildModal1View = function(cardIndex) {
         const modalWrapper = document.createElement('div');
         modalWrapper.className = 'modal1-wrapper';
