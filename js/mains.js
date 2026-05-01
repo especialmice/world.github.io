@@ -31,8 +31,8 @@
     };
 
     const IMAGE_INTERVAL = 2000;
-    const SECTION_DELAY = 2200;      // 切换前等待时间（用于非视频播放状态）
-    const VIDEO_WAIT_DELAY = 1500;   // 视频结束后或暂停后额外等待时间
+    const SECTION_DELAY = 3000;      // 切换前等待时间（用于非视频播放状态）
+    const VIDEO_WAIT_DELAY = 2000;   // 视频结束后或暂停后额外等待时间
 
     let currentId = 0;
     let currentImageIndex = 0;

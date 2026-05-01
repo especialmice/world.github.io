@@ -40,9 +40,9 @@ body {
 }
 
 .logo {
-    width: 180px;
-    height: 100px;
-    background: url(../img/logo/logo.png) no-repeat left/95% 100px;
+    width: clamp(12em, 12vw, 32em);
+    height: clamp(12em, 12vw, 32em);
+    background: url(../img/logo/logo.png) no-repeat left / 95%;
     margin-top: 80px;
     margin-left: 20em;
     flex-shrink: 0;
@@ -142,14 +142,14 @@ body {
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: clamp(20px, 1.4vw, 6em);
     z-index: 1000;
 }
 
 .nav-dots a {
     display: block;
-    width: 40px;
-    height: 40px;
+    width: clamp(40px, 4vw, 8em);
+    height: clamp(40px, 4vw, 8em);
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -249,15 +249,15 @@ body {
 
 .switch-buttons {
     display: flex;
-    gap: 20px;
+    gap: clamp(50px, 6vw, 10em);
     margin-bottom: 30px;
     z-index: 10;
 }
 
 .switch-btn {
-    width: 50px;
-    height: 50px;
-    background: url(../img/main/跳2.png) center/cover no-repeat;
+    width: clamp(50px, 6vw, 10em);
+    height: clamp(50px, 6vw, 10em);
+    background: url(../img/main/跳2.png) center / cover no-repeat;
     border: none;
     cursor: pointer;
     transition: all 0.25s ease;
@@ -402,7 +402,7 @@ body {
 }
 
 .footer-container {
-    max-width: 1200px;
+    max-width: clamp(12em, 80vw, 400em);
     margin: 0 auto;
     width: 100%;
 }
@@ -431,7 +431,7 @@ body {
 
 .col-links {
     margin-bottom: 1.5rem;
-    width: 100%;
+    width: clamp(12em, 24vw, 100em);
 }
 
 .col-links a {
