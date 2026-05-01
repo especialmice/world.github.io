@@ -1,10 +1,9 @@
-/* ===== homes.css (三分区版本 - 优化 + 统一背景d5) ===== */
+/* ===== homes.css (精简优化版 - 视觉不变) ===== */
 :root {
     --primary-color: rgb(255, 70, 85);
     --gold: #d4af37;
     --text-light: #f0f0f0;
     --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --transition-normal: 0.3s ease;
     --nav-height: 100px;
 }
 
@@ -23,12 +22,11 @@ html {
 }
 
 body {
-    padding-top: 0;
     font-family: 'Helvetica Neue', 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', 'Microsoft YaHei', sans-serif;
     background-color: #0a0c12;
 }
 
-/* ===== 导航栏 (logo左 + 三个标题绝对居中) ===== */
+/* ===== 导航栏 ===== */
 .nav-top {
     position: relative;
     width: 100%;
@@ -41,7 +39,7 @@ body {
     justify-content: flex-start;
 }
 
-.logo {    
+.logo {
     width: 180px;
     height: 100px;
     background: url(../img/logo/logo.png) no-repeat left/95% 100px;
@@ -70,42 +68,33 @@ body {
     font-weight: 500;
     position: relative;
 }
-.nav::before {
-    content: "";
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    margin-right: 12px;
-    background-image: url(../img/main/top_kv-nav_line.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 14px 14px;
-    vertical-align: middle;
-}
+
+.nav::before,
 .nav::after {
     content: "";
     display: inline-block;
     width: 14px;
     height: 14px;
-    margin-left: 12px;
-    background-image: url(../img/main/top_kv-nav_line.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 14px 14px;
+    background: url(../img/main/top_kv-nav_line.png) center/14px no-repeat;
     vertical-align: middle;
 }
 
+.nav::before {
+    margin-right: 12px;
+}
 
+.nav::after {
+    margin-left: 12px;
+}
 
 .nav:hover {
     color: var(--primary-color);
     border-bottom: 5px solid var(--primary-color);
 }
 
-/* 响应式导航 */
-@media (max-width: 1850px) {
+@media (max-width: 2150px) {
     .logo {
-        margin-left: clamp(16px, 15vw, 20em);
+        margin-left: clamp(16px, 14vw, 20em);
     }
 }
 
@@ -119,8 +108,8 @@ body {
     .logo {
         width: 160px;
         height: 70px;
-        background: url(../img/logo/logo.png) no-repeat center/contain;
-        margin: 0 auto 8px auto;
+        background: url(../img/logo/logo.png) center/contain no-repeat;
+        margin: 0 auto 8px;
         align-self: center;
     }
     .nav-box {
@@ -141,6 +130,7 @@ body {
         margin-left: 6px;
         width: 10px;
         height: 10px;
+        background-size: 10px;
     }
 }
 
@@ -190,13 +180,10 @@ body {
     justify-content: center;
 }
 
-/* ===== 统一背景 (d5) ===== */
+/* ===== 统一背景 ===== */
 .unified-bg {
-    background: url(../img/main/d5.png);
-    background-size: cover;
-background-position: center;
+    background: url(../img/main/d5.png) center/cover;
     width: 100%;
-   
 }
 
 .first-bg-wrapper,
@@ -207,7 +194,6 @@ background-position: center;
 /* ===== 第一分区：故事内容 ===== */
 .first .inner-wrapper {
     width: 100%;
-    min-height: inherit;
     padding: 4rem 0;
     display: flex;
     align-items: center;
@@ -215,16 +201,15 @@ background-position: center;
 }
 
 .first .story-content {
-
     width: 90%;
     padding: 2rem;
-    margin: 0 0 10vw 0;
+    margin: 0 0 10vw;
     background: url(../img/main/story_char.png) top/100% no-repeat;
+    aspect-ratio: 37 / 25;
     border-radius: 32px;
     color: var(--text-light);
     text-align: center;
     backdrop-filter: blur(2px);
-    /* box-shadow: 0 10px 25px rgba(0,0,0,0.3); */
 }
 
 .story-content h1 {
@@ -233,7 +218,7 @@ background-position: center;
     letter-spacing: 6px;
     color: #f5e7b2;
     text-shadow: 0 0 10px #d4af37, 0 0 5px #aa7e2e, 2px 2px 0 #6b4f1a;
-    margin-bottom: 0.5rem;
+    margin: 4rem 0 0.5rem;
 }
 
 .story-content .subtitle {
@@ -250,12 +235,10 @@ background-position: center;
     font-size: 1.2rem;
     line-height: 1.7;
     color: #f0f3fa;
-    max-width: 400px;
-    margin: 0 auto;
     white-space: pre-line;
     letter-spacing: 0.5px;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
-    font-weight: 400;
+    margin: 0 auto;
 }
 
 /* ===== 第二分区：切换区域 ===== */
@@ -278,7 +261,7 @@ background-position: center;
     border: none;
     cursor: pointer;
     transition: all 0.25s ease;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 .switch-btn.active,
@@ -337,7 +320,19 @@ background-position: center;
     max-height: 100%;
     object-fit: contain;
     border-radius: 16px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: translateX(0);
+}
 
+.content-image.img-fade-out {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.content-image.img-fade-in {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .second .split-right {
@@ -350,13 +345,12 @@ background-position: center;
 
 .video-container {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 1 / 2;
+    border-radius: 24px;
+    transition: opacity 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
-    aspect-ratio: 1 / 2; 
-    border-radius: 24px;
-    transition: opacity 0.3s;
 }
 
 .content-video {
@@ -364,7 +358,7 @@ background-position: center;
     max-height: 100%;
     border-radius: 20px;
     object-fit: contain;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .fade-out {
@@ -372,27 +366,10 @@ background-position: center;
     transition: opacity 0.2s ease;
 }
 
-/* 图片横向渐入渐出效果 */
-.content-image {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* 淡出 + 向左滑动 */
-.content-image.img-fade-out {
-    opacity: 0;
-    transform: translateX(-20px);
-}
-
-/* 淡入 + 向右复位 */
-.content-image.img-fade-in {
-    opacity: 1;
-    transform: translateX(0);
-}
-
 @media (max-width: 1100px) {
-    .second .inner-wrapper { width: 85%; }
+    .second .inner-wrapper {
+        width: 85%;
+    }
 }
 
 @media (max-width: 850px) {
@@ -401,9 +378,17 @@ background-position: center;
         width: 90%;
         margin: 40px 0;
     }
-    .second .split-left { margin-right: 0; margin-bottom: 20px; }
-    .second .split-right { margin-left: 0; }
-    .second .split-left .text-area { flex: 0 0 auto; min-height: 100px; }
+    .second .split-left {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .second .split-right {
+        margin-left: 0;
+    }
+    .second .split-left .text-area {
+        flex: 0 0 auto;
+        min-height: 100px;
+    }
 }
 
 /* ===== 第三分区：底部链接 ===== */
@@ -441,7 +426,7 @@ background-position: center;
     color: #c99e6f;
     margin-bottom: 1.5rem;
     letter-spacing: 2px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .col-links {
@@ -451,24 +436,62 @@ background-position: center;
 
 .col-links a {
     display: inline-block;
-    color: #e0d6c6;
-    text-decoration: none;
+    color: #2d2d2d;
     font-size: 0.95rem;
     margin: 0 12px 12px 0;
     padding: 4px 8px;
     transition: color 0.2s, transform 0.1s;
     border-radius: 20px;
-    background: rgba(255,255,240,0.05);
+    background: rgba(255, 255, 240, 0.05);
 }
 
 .col-links a:hover {
     color: var(--gold);
-    background: rgba(212,175,55,0.15);
+    background: rgba(212, 175, 55, 0.15);
     transform: translateY(-2px);
 }
 
 @media (max-width: 700px) {
-    .footer-row { grid-template-columns: 1fr; gap: 30px; }
-    .col-links a { white-space: normal; }
-    .col-title { font-size: 1.8rem; }
+    .footer-row {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .col-links a {
+        white-space: normal;
+    }
+    .col-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* ===== 响应式字体（原 min-width:1440px 改为 max-width，保持视觉一致） ===== */
+@media (min-width: 1440px) {
+    .story-content .text {
+        font-size: 1.5vw;
+    }
+    .story-content h1 {
+        font-size: 2.8vw;
+    }
+    .story-content .subtitle {
+        font-size: 1.6vw;
+    }
+    .second .split-left .text-area {
+        font-size: 1.2vw;
+    }
+    .col-title {
+        font-size: 2vw;
+    }
+    .col-links a {
+        font-size: 0.95vw;
+    }
+    .nav{
+        font-size: 1.8vw;
+    }
+    .logo{
+        margin-top: 8vw;
+    margin-left: 16vw;
+    }
+    .nav-top{
+        height: 8vw;
+    }
 }

@@ -49,7 +49,6 @@
             const bottomDiv = document.createElement('div');
             bottomDiv.style.flex = '1';
             bottomDiv.style.width = '100%';
-            bottomDiv.style.maxHeight = '40px';
             bottomDiv.style.aspectRatio = '53/10';
             bottomDiv.style.borderRadius = '0 0 4px 4px';
             bottomDiv.style.backgroundSize = 'cover';

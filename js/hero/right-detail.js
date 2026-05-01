@@ -30,12 +30,7 @@
     WF.rightDetail.createLeftColumn = function(card) {
         const leftCol = document.createElement('div');
         leftCol.className = 'right-modal2-left-col';
-        leftCol.style.width = '100%';
-        leftCol.style.display = 'flex';
-        leftCol.style.flexDirection = 'column';
-        leftCol.style.justifyContent = 'center';
-        leftCol.style.padding = '20px 2em';
-        leftCol.style.gap = '0.2em';
+
 
         if (WF.state.activeCardIndex === 0 || WF.state.activeCardIndex === 1) {
             const div5 = document.createElement('div');
@@ -47,7 +42,7 @@
             const attrButton = window.AppData.evenButtonGroups[1].buttons.find(b => b.value === card.Attribute);
             attrImg.src = attrButton ? attrButton.image : '';
             attrImg.alt = card.Attribute || '';
-            attrImg.style.height = '1em';
+            attrImg.style.height = 'clamp(12px, 1.1vw, 2.8em)';
             const attrText = document.createElement('div');
             attrText.textContent = card.designation || '';
             div5.appendChild(attrImg);
@@ -57,8 +52,7 @@
             const div6 = document.createElement('div');
             div6.className = 'right-modal2-name';
             div6.textContent = card.name || '';
-            div6.style.fontSize = '2em';
-            div6.style.fontWeight = '500';
+
             leftCol.appendChild(div6);
         }
 
@@ -122,6 +116,8 @@
         return leftCol;
     };
 
+
+    //右侧按钮
     WF.rightDetail.createRightButtons = function() {
         const rightCol = document.createElement('div');
         rightCol.className = 'right-modal2-right-col';
@@ -136,10 +132,8 @@
             rightButtons.buttons.forEach(btnData => {
                 const btn = document.createElement('button');
                 btn.className = 'button';
-                btn.style.width = '8vw';
-                btn.style.height = '8vw';
-                btn.style.maxWidth = 'clamp(10px,8vw,35px)';
-                btn.style.maxHeight = 'clamp(10px,8vw,35px)';
+                btn.style.maxWidth = 'clamp(30px,2.6vw,6em)';
+                btn.style.maxHeight = 'clamp(30px,2.6vw,6em)';
                 btn.style.padding = '0';
                 btn.style.cursor = 'pointer';
                 btn.style.border = '1px #0000004d';
@@ -167,9 +161,7 @@
     WF.rightDetail.createHeaderArea = function(card, config) {
         const div1 = document.createElement('div');
         div1.className = 'right-modal2-header-area';
-        div1.style.maxHeight = '219px';
-        div1.style.aspectRatio = '300 / 149';
-        div1.style.position = 'relative';
+
 
         let bgUrl = null;
         if (config.rightheaderBg && config.rightheaderBg.trim() !== '') {
@@ -183,8 +175,6 @@
         }
         if (bgUrl) {
             div1.style.backgroundImage = `url('${bgUrl}')`;
-            div1.style.backgroundSize = 'cover';
-            div1.style.backgroundPosition = 'top center';
         }
 
         const contentDiv = document.createElement('div');
@@ -426,9 +416,6 @@
 
         const modal2Container = document.createElement('div');
         modal2Container.className = 'right-modal2';
-        modal2Container.style.display = 'flex';
-        modal2Container.style.flexDirection = 'column';
-        modal2Container.style.height = '100%';
 
         const headerArea = WF.rightDetail.createHeaderArea(card, config);
         modal2Container.appendChild(headerArea);

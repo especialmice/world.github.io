@@ -6,16 +6,14 @@
 .detail-close-btn {
     display: block;
     width: 80%;
-    max-width: clamp(12em, 24vw, 18em);
-    height: 15vw;
-    max-height: clamp(2em, 4vw, 3em);
+    max-width: 200px;
     margin: 24px auto 16px;
     padding: 10px 16px;
     background-color: #e93551;
     color: white;
     border: none;
     border-radius: 12px;
-    font-size: clamp(0.8rem, 1vw, 2em);
+    font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     text-align: center;
@@ -32,7 +30,15 @@
     transform: scale(0.96);
 }
 
-
+/* 移动端按钮稍大，便于点击 */
+@media (max-width: 800px) {
+    .detail-close-btn {
+        width: 40%;
+        padding: 12px 16px;
+        font-size: 16px;
+        margin: 20px auto 12px;
+    }
+}
   .global-loader {
             width: 100%;
             height: 100%;
@@ -43,8 +49,10 @@
             backdrop-filter: blur(2px);
         }
        .loader-box {
-        width: 20vw;
-        height: 20vw;
+        width: 160px;
+        height: 160px;
+        max-width: 40vw;
+        max-height: 40vw;
         background: url('../img/loader/1.gif') center center / contain no-repeat;
         display: flex;
         align-items: center;
@@ -58,7 +66,7 @@
             background: url('../img/loader/2.gif') center center / contain no-repeat;
             position: absolute;
             left: -2%;
-            background-size: 500%;
+            background-size: 280px;
             aspect-ratio: 10 / 10;
             bottom: -8%;
         }
@@ -94,9 +102,8 @@
 
 .filter-modal {
     width: 90%;
-    max-width: clamp(780px, 28vw, 300em);
-    height: 90%;
-    max-height: clamp(780px, 40vw, 300em);
+    max-width: 620px;
+    max-height: 80%;
     background-color: #fafafa;
     border: 2px solid white;
     border-radius: 1em;
@@ -109,21 +116,19 @@
 
 .filter-title {
     text-align: center;
-    font-size: clamp(1.2rem, 1vw, 3em);
+    font-size: 1.2rem;
     font-weight: bold;
     padding: 0.5em;
     border-bottom: 2px solid #ddd;
 }
-.filter-general{
-    font-size: clamp(1em, 1vw, 2.8em);
-}
+
 .filter-content {
     flex: 1;
     overflow-y: auto;
-    padding: clamp(1.2rem, 1vw, 3em) 0;
+    padding: 1em 0;
     display: flex;
     flex-direction: column;
-    gap: clamp(1.2rem, 1vw, 3em);
+    gap: 1em;
 }
 
 .filter-odd-item {
@@ -132,12 +137,12 @@
     justify-content: center;
     align-items: center;
     gap: 0.5em;
-    padding: clamp(1.2rem, 1vw, 3em);
+    padding: 0.5em;
 }
 
 .filter-odd-item .icon {
     width: 44.5%;
-    height: clamp(1em, 1.1vw, 3em);
+    height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -146,7 +151,7 @@
 .filter-odd-item .title {
     flex: none;
     text-align: center;
-    font-size: clamp(1em, 1.1vw, 3em);
+    font-size: 1em;
 }
 
 .filter-search-input {
@@ -154,7 +159,7 @@
     padding: 0.6em;
     border: 1px solid #ccc;
     border-radius: 2em;
-    font-size: clamp(1.2em, 1vw, 3em);
+    font-size: 1rem;
     outline: none;
 }
 
@@ -166,12 +171,12 @@
 }
 
 .filter-button-group button {
-    height: clamp(40px, 2vw, 8em);
-    min-width: clamp(5em, 4vw, 16em);
+    height: 40px;
+    min-width: 5em;
     padding: 0.5em 1em;
     box-shadow: 1px 1px 5px #0000004d;
     border: none;
-    border-radius: clamp(0.8rem, 0.4vw, 8em);
+    border-radius: 1em;
     cursor: pointer;
     transition: 0.2s;
 }
@@ -188,24 +193,24 @@
 }
 
 .filter-buttons .cancel {
-    width: clamp(6.33em, 6vw, 12em);
-    height: clamp(2.33em, 2vw, 4em);
-        font-size: clamp(1em, 0.8vw, 3em);
+    width: 9em;
+    height: 3em;
+    padding: 0.5em 1em;
+    color: white;
     background-color: #e93551;
     border: 2px solid #f04064;
     border-radius: 0.5em;
-    color: white;
     cursor: pointer;
 }
 
 .filter-buttons .confirm {
-    width: clamp(6.33em, 6vw, 12em);
-    height: clamp(2.33em, 2vw, 4em);
-    font-size: clamp(1em, 0.8vw, 3em);
+    width: 9em;
+    height: 3em;
+    padding: 0.5em 1em;
     background-color: #2dc4b6;
     border: 2px solid #38d0c6;
-    border-radius: 0.5em;
     color: white;
+    border-radius: 0.5em;
     cursor: pointer;
 }
 
@@ -215,21 +220,12 @@
     height: 100%;
     position: relative;
     overflow: hidden;
-    display:  flex;
-    flex-direction: column;
-        
 }
 
 .right-modal2-header-area {
-    height: auto;
-    min-height: 160px;
-    max-height: 14vw;
-    aspect-ratio:   300 / 149;
     width: 100%;
     position: relative;
     overflow: hidden;
-    background-size: cover ;
-    background-position: center ;
 }
 
 .right-modal2-content {
@@ -244,6 +240,13 @@
     box-sizing: border-box;
 }
 
+.right-modal2-left-col {
+    /* 左列样式由内联控制，此处留空 */
+}
+
+.right-modal2-right-col {
+    /* 右列样式由内联控制，此处留空 */
+}
 
 /* 右侧详情区域样式 */
 .right-modal2-detail-area {
@@ -253,12 +256,12 @@
 }
 
 .right-modal2-detail-text {
-    padding: clamp(0.8rem, 0.4vw, 2rem) clamp(0.8rem, 0.8vw, 2rem);
-    margin: 4px 0 clamp(0.8rem, 1.1vw, 2em) 0;
+    padding: 8px 12px;
+    margin: 4px 0;
     background-color: #fff;
     color: #444;
     border-radius: 6px;
-    font-size: clamp(0.8rem, 1.1vw, 2em);
+    font-size: clamp(0.85rem, 3vw, 1rem);
     line-height: 1.6;
     word-break: break-word;
 }
@@ -277,8 +280,17 @@
     border-radius: 8px;
     margin-top: 8px;
 }
-
-
+.story-section-title {
+    font-weight: 500;
+    font-size: 1.1em;
+    color: #444;
+    margin-bottom: 0.2em;
+}
+.story-section-content {
+    line-height: 1.5;
+    color: #888;
+    white-space: pre-wrap;
+}
 
 .ability-section {
     margin-bottom: 12px;
@@ -299,7 +311,7 @@
     width: auto;
     height: 2em;
     padding: 0 4vw 0 1vw;
-    margin: clamp(0.8rem, 1.1vw, 2em);
+    margin: 8px 0px 8px 15px;
     font-weight: bold;
     font-size: clamp(14px, 1.5vw, 24px);
 }
@@ -345,18 +357,12 @@
     margin-top: 6px;
 }
 .story-section-title {
-    font-size: clamp(0.9rem, 1.2vw, 2.2em);
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem);
     font-weight: 600;
-    padding:clamp(0.4rem, 0.5vw, 1em) clamp(0.8rem, 1.1vw, 2em) 0 clamp(0.8rem, 1.1vw, 2em);
-    margin-bottom: 0.2em;
-    color: #444;
 }
 .story-section-content {
-    font-size: clamp(0.8rem, 1.1vw, 2em);
+    font-size: clamp(0.8rem, 3vw, 0.95rem);
     line-height: 1.5;
-    padding: clamp(0.4rem, 0.5vw, 0.4em) clamp(0.8rem, 1.1vw, 2em);
-    color: #888;
-    white-space: pre-wrap;
 }
 
 /* 能力效果区块响应式 */
@@ -364,17 +370,18 @@
     margin-bottom: 12px;
 }
 .ability-section-title {
-    font-size: clamp(0.95rem, 1.2vw, 2.4em);
+    font-size: clamp(12px, 2.5vw, 18px);
     height: 2em;
     padding: 0 3vw 0 1.5vw;
 }
 .ability-section-content {
-    font-size: clamp(0.85rem, 1.15vw, 2.2em);
-    margin-left: clamp(0.8rem, 1.1vw, 2em);
+    font-size: clamp(0.85rem, 3vw, 1rem);
+    margin-left: 15px;
+    font-size: 1.2em;
 }
 .ability-text {
-    font-size: clamp(0.8rem, 1.1vw, 2em);
-    margin-left: clamp(0.8rem, 1.1vw, 2em);
+    font-size: clamp(0.8rem, 2.8vw, 0.95rem);
+    margin-left: 16px;
 }
 
 /* 移动端特别调整 */
@@ -389,9 +396,8 @@
 /* ========== 能力子项新布局（序号 + 竖线 + 文本） ========== */
 .ability-skill-item {
     display: flex;
-    gap: clamp(0.8rem, 1.2vw, 2em);
-    margin: clamp(0.8rem, 1.1vw, 2em);
-    margin-left: clamp(0.8rem, 1.1vw, 2.8em);
+    gap: 12px;
+    margin: 16px 16px 16px 16px;
     position: relative;
 }
 
@@ -407,14 +413,14 @@
 
 /* 序号圆形样式（沿用原 skill 样式，增强适应性） */
 .ability-skill-number {
-    width: clamp(0.8rem, 2.8vw, 2.2em);
-    height: clamp(0.8rem, 2.8vw, 2.2em);
+    width: 32px;
+    height: 32px;
     background-color: #2dc4b6;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(12px, 1.1vw, 1.5em);
+    font-size: 1rem;
     font-weight: bold;
     color: #fff;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -425,7 +431,7 @@
 /* 竖线：绝对定位，从序号下方开始，延伸至父容器底部 */
 .ability-skill-line {
     position: absolute;
-    top: clamp(0.8rem, 2.8vw, 2em);               /* 序号高度，从序号底部开始 */
+    top: 32px;               /* 序号高度，从序号底部开始 */
     left: 50%;
     transform: translateX(-50%);
     width: 5px;
@@ -449,7 +455,7 @@
 .ability-skill-right .ability-text {
     margin: 0 !important;
     padding: 0 !important;
-    font-size: clamp(0.8rem, 1.1vw, 2em);
+    font-size: clamp(0.85rem, 3vw, 1rem);
     line-height: 1.5;
     color: #444;
 }

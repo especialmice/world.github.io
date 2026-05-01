@@ -17,6 +17,7 @@ body, html {
 /* ========== 响应式主容器 (div0) ========== */
 .responsive-wrapper {
     width: 90%;               /* 默认宽度90%居中 */
+    max-width: 1400px;
     min-width: 280px;
     margin: 0 auto;
     height: 100%;
@@ -70,22 +71,22 @@ body, html {
 /* ========== 返回按钮 ========== */
 .back-btn {
     position: absolute;
-    bottom: clamp(-0.4em, -2vw, -3em);
+    bottom: 16px;
     left: 16px;
     z-index: 30;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
     color: white;
     border: none;
-    border-radius: clamp(0.2em, 0.8vw, 40px);
-    padding: clamp(1em, 0.8vw, 3em) clamp(1em, 1.4vw, 6em);
-    font-size: clamp(1em, 1.1vw, 6em);
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 1px;
     cursor: pointer;
-    display: none;              /* 初始隐藏，仅在模态框1出现时显示 */
+    display: none;          /* 初始隐藏，仅在模态框1出现时显示 */
     transition: 0.2s;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 .back-btn:hover {
     background: rgba(228, 225, 225, 0.85);
@@ -176,8 +177,7 @@ body, html {
 }
 /* 顶部20%区域，展示大图 */
 .modal1-div4 {
-    height: 12vw;
-    max-height: 556px;
+    height: 20%;
     position: relative;
     background: url(../img/sarch/title/char/keyword_list_character_header_background2.png) center center / cover no-repeat;
     background-color: #2c3142;
@@ -195,6 +195,8 @@ body, html {
     overflow: hidden;
     padding: 0;
     width: auto;
+    max-height: 45px;
+    max-width: 45px;
 }
 .filter-btn .filter-inner {
     display: flex;
@@ -207,8 +209,8 @@ body, html {
 }
 .filter-btn .filter-icon {
     border-radius: 50%;
-    width: clamp(2.3em, 3vw, 8em);
-    height: clamp(2.3em, 3vw, 8em);
+    width: 2.3em;
+    height: 2.3em;
     margin-left: .3em;
     display: flex;
     flex-direction: column;
@@ -219,7 +221,8 @@ body, html {
 }
 .filter-btn .filter-text {
     text-align: center;
-    font-size: clamp(10px, 1vw, 2em);
+    font-size: 10px;
+    padding: 10px 6px 0 6px;
     width: 100%;
     color: #444;
     font-weight: 1000;
@@ -234,7 +237,7 @@ body, html {
 .square-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);  /* 每行 4 列，等分宽度 */
-    gap: 1vw 2vw;                              /* 卡片之间的间隙 */
+    gap: 15px 2vw;                              /* 卡片之间的间隙 */
     justify-content: unset;
     align-items: unset;
 }
@@ -242,7 +245,8 @@ body, html {
     grid-template-columns: repeat(1, 1fr);
 }
 .square-card {
-    width: 100%;            /* 填充网格单元格 */    
+    width: 100%;            /* 填充网格单元格 */
+    max-height: 200px;      
     cursor: pointer;
     transition: 0.2s ease;
     display: flex;
@@ -287,11 +291,29 @@ body, html {
     filter: brightness(0.95);
 }
 
+/* ========== 右侧面板 (桌面端) ========== */
+.right-panel {
+    width: 55%;
+    height: 100%;
+    overflow-y: auto;
+}
 
+/* 右侧初始占位符 */
+.right-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #cccbcb;
+    font-size: 1rem;
+    text-align: center;
+    letter-spacing: 1px;
+    background: transparent;
+}
 
 /* 左侧底部装饰区 */
 .left-bottom {
-    height: 5vw;
+    height: 5%;
     background: url(../img/sarch/down.png) center center;
     background-color: hwb(0 62% 38% / 0.315);
     background-size: contain;
@@ -344,7 +366,9 @@ body, html {
         height: 18%;
     }
     .back-btn {
+        bottom: 12px;
         left: 12px;
+        padding: 6px 14px;
         font-size: 12px;
     }
 }
@@ -367,36 +391,24 @@ body, html {
     display: flex;
 }
 
-
-
-
-
-
-
-
-/* ========== 右侧面板 (桌面端) ========== */
-.right-panel {
-    width: 55%;
-    height: 100%;
-    overflow-y: auto;
-}
-
-/* 右侧初始占位符 */
-.right-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    color: #cccbcb;
-    font-size: 1rem;
-    text-align: center;
-    letter-spacing: 1px;
-    background: transparent;
-}
 /* ========== 右侧面板内容屏幕适配（新增） ========== */
+.right-modal2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
-
-
+/* 顶部区域：改用 min-height + 相对单位，背景图自适应 */
+.right-modal2-header-area {
+    min-height: 160px;
+    height: auto;
+    aspect-ratio: 300 / 149; /* 保持宽高比 */
+    width: 100%;
+    position: relative;
+    background-size: cover !important;
+    background-position: top center !important;
+}
 
 /* 内容叠加层：改用 flex 布局，避免绝对定位溢出 */
 .right-modal2-content {
@@ -414,14 +426,20 @@ body, html {
 
 /* 左列：自适应宽度，允许缩小 */
 .right-modal2-left-col {
-        flex: 1;
-        min-width: 0;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 20px clamp(0.2rem, 1.2vw, 2em);
-        gap: clamp(0.2rem, 0.5vw, 1em);
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    padding: 12px !important;
+}
+
+
+/* 右列按钮本身样式保持圆形，但尺寸可稍小 */
+.right-modal2-right-col .button {
+    width: 32px !important;
+    height: 32px !important;
 }
 
 /* 详情区域滚动区 */
@@ -433,8 +451,7 @@ body, html {
 
 /* 名称文字自动换行、缩放 */
 .right-modal2-name {
-    font-weight: 500;
-    font-size: clamp(1.2rem, 1.4vw, 3.8em) ;
+    font-size: clamp(1.2rem, 5vw, 2rem) !important;
     word-break: break-word;
 }
 
@@ -442,7 +459,7 @@ body, html {
 .right-modal2-race,
 .right-modal2-gender,
 .right-modal2-cv {
-    font-size: clamp(12px, 1.2vw, 2.8em);
+    font-size: clamp(12px, 3.5vw, 14px);
     flex-wrap: wrap;
 }
 
@@ -485,18 +502,9 @@ body, html {
 
 /* 超宽屏（≥ 1400px）下适当增大左侧内边距 */
 @media (min-width: 1400px) {
-    .filter-btn{
-        bottom: 0.8vw;
-        left: 0.8vw;
+    .right-modal2-name {
+        font-size: 2.2rem !important;
     }
-        
-    .filter-btn .filter-inner{
-        width: 2.3vw;
-        height: 2.3vw;
-    }
-    .filter-btn .filter-text{
-        padding: 2vw 6px 0 6px;
-        font-size: 0.6vw;
-    }
+
 }
 

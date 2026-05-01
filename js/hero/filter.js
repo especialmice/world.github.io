@@ -56,7 +56,7 @@
             const img = document.createElement('img');
             img.src = btnData.image;
             img.alt = btnData.label;
-            img.style.height = '1.2em';
+            img.style.height = 'clamp(1.2em, 1vw, 3em)';
             btn.appendChild(img);
             if (isFilterable) {
                 btn.addEventListener('click', () => {
@@ -142,6 +142,7 @@
             window.AppData.evenButtonGroups[2].buttons.forEach(btnData => {
                 const btn = document.createElement('button');
                 const span = document.createElement('span');
+                span.className = 'filter-general'
                 span.textContent = btnData.label;
                 btn.appendChild(span);
                 btn.addEventListener('click', () => {
